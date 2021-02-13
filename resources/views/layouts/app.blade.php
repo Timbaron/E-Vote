@@ -7,12 +7,12 @@
     <meta name="description" content="Cuba admin is super flexible, powerful, clean &amp; modern responsive bootstrap 5 admin template with unlimited possibilities.">
     <meta name="keywords" content="admin template, Cuba admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="pixelstrap">
-    <link rel="icon" href="../assets/images/favicon.png" type="image/x-icon">
-    <link rel="shortcut icon" href="../assets/images/favicon.png" type="image/x-icon">
+    <link rel="icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
+    <link rel="shortcut icon" href="{{asset('images/favicon.png')}}" type="image/x-icon">
     <title>Cuba - Premium Admin Template</title>
     <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,400i,500,500i,700,700i&amp;display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i,900&amp;display=swap" rel="stylesheet">
+    <link href="{{asset('css/googlecss1.css')}}" rel="stylesheet">
+    <link href="{{asset('css/googlecss2.css')}}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('css/fontawesome.css')}}">
     <!-- ico-font-->
     <link rel="stylesheet" type="text/css" href="{{asset('vendors/icofont.css')}}">
@@ -41,7 +41,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Bvote') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -111,7 +111,7 @@
     <!-- Plugins JS start-->
     <script src="{{asset('js/sidebar-menu.js')}}"></script>
     <script src="{{asset('js/chart/chartist/chartist.js')}}"></script>
-    <script src="j{{asset('s/chart/chartist/chartist-plugin-tooltip.js')}}"></script>
+    <script src="{{asset('s/chart/chartist/chartist-plugin-tooltip.js')}}"></script>
     <script src="{{asset('js/chart/knob/knob.min.js')}}"></script>
     <script src="{{asset('js/chart/knob/knob-chart.js')}}"></script>
     <script src="{{asset('js/chart/apex-chart/apex-chart.js')}}"></script>

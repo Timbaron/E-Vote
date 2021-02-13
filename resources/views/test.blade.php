@@ -1,4 +1,3 @@
 @extends('layouts.app')
-@section('content')
-rgrgp
-@endsection
+@include('inc.sidebar')
+35nn
