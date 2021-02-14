@@ -68,6 +68,9 @@
                     <li>
                         <a href="{{route('coming-soon')}}"> Todo </a>
                     </li>
+                    <li>
+                        <a href="{{route('coming-soon')}}"> Blog </a>
+                    </li>
                 </ul>
 
                 {{-- POLLS --}}
