@@ -1,3 +1,5 @@
 @extends('layouts.app')
-@include('inc.sidebar')
-35nn
+
+@section('content')
+
+@endsection
