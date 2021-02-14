@@ -26,36 +26,51 @@
                         <i class="flaticon-computer-6 ml-3"></i>
                         <span>Dashboard</span>
                     </div>
-
+                </a>
+            </li>
+            <li class="menu">
+                <a href="#mailing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="flaticon-mail-19"></i>
+                        <span>Apps</span>
+                    </div>
                     <div>
-                        <span class="badge badge-pill badge-secondary mr-2">7</span>
+                        <i class="flaticon-right-arrow"></i>
                     </div>
                 </a>
-                <ul class="collapse submenu list-unstyled show" id="dashboard" data-parent="#accordionExample">
-                    <li class="active">
-                        <a href="index-2.html"> <i class="flaticon-computer-4"></i> Default </a>
+                <ul class="collapse submenu list-unstyled" id="mailing" data-parent="#accordionExample">
+                    <li>
+                        <a href="{{route('coming-soon')}}"> Chat </a>
                     </li>
                     <li>
-                        <a href="accounting_dashboard.html"> <i class="flaticon-chart-line"></i> Accounting </a>
+                        <a href="{{route('coming-soon')}}"> Mailbox </a>
                     </li>
                     <li>
-                        <a href="analytics_dashboard.html"> <i class="flaticon-computer-2"></i> Analytics </a>
+                        <a href="{{route('coming-soon')}}"> Mailbox With Chat </a>
                     </li>
                     <li>
-                        <a href="car_dashboard.html"> <i class="flaticon-car"></i> Car </a>
+                        <a href="{{route('coming-soon')}}"> Newsletter </a>
                     </li>
                     <li>
-                        <a href="classic_dashboard.html"> <i class="flaticon-computer-8"></i> Classic </a>
+                        <a href="{{route('coming-soon')}}"> Scheduler </a>
                     </li>
                     <li>
-                        <a href="stock_market_dashboard.html"> <i class="flaticon-up-chart"></i> Stock Market </a>
-                    </li>
-                    <li>
-                        <a href="cryptocurrency_dashboard.html"> <i class="flaticon-bitcoin-circle"></i> Cryptocurrency </a>
+                        <a href="{{route('coming-soon')}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Calendar <i class="flaticon-right-arrow"></i> </a>
+                        <ul class="collapse list-unstyled sub-submenu" id="apps-calendars" data-parent="#apps-calendars">
+                            <li>
+                                <a href="apps_basic_calendar.html"> Basic </a>
+                            </li>
+                            <li>
+                                <a href="apps_full_calendar.html"> Full Calendar </a>
+                            </li>
+                            <li>
+                                <a href="apps_drag_n_drop_calendar.html"> Drag n Drop </a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </li>
-            <li class="menu">
+            {{-- <li class="menu">
                 <a href="#ecommerce" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="flaticon-cart-2"></i>
@@ -809,48 +824,7 @@
                 </ul>
             </li>
 
-            <li class="menu">
-                <a href="#mailing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <i class="flaticon-mail-19"></i>
-                        <span>Apps</span>
-                    </div>
-                    <div>
-                        <i class="flaticon-right-arrow"></i>
-                    </div>
-                </a>
-                <ul class="collapse submenu list-unstyled" id="mailing" data-parent="#accordionExample">
-                    <li>
-                        <a href="apps_chat.html"> Chat </a>
-                    </li>
-                    <li>
-                        <a href="apps_mailbox.html"> Mailbox </a>
-                    </li>
-                    <li>
-                        <a href="apps_mailbox_with_chat.html"> Mailbox With Chat </a>
-                    </li>
-                    <li>
-                        <a href="apps_newsletter.html"> Newsletter </a>
-                    </li>
-                    <li>
-                        <a href="apps_scheduler.html"> Scheduler </a>
-                    </li>
-                    <li>
-                        <a href="#apps-calendars" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Calendar <i class="flaticon-right-arrow"></i> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="apps-calendars" data-parent="#apps-calendars">
-                            <li>
-                                <a href="apps_basic_calendar.html"> Basic </a>
-                            </li>
-                            <li>
-                                <a href="apps_full_calendar.html"> Full Calendar </a>
-                            </li>
-                            <li>
-                                <a href="apps_drag_n_drop_calendar.html"> Drag n Drop </a>
-                            </li>
-                        </ul>
-                    </li>
-                </ul>
-            </li>
+
 
             <li class="menu">
                 <a href="#modules" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
@@ -1115,7 +1089,7 @@
                         <a href="javascript:void(0);"> Sample Link 3 </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
     </nav>
 
