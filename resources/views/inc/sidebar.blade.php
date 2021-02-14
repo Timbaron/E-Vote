@@ -29,6 +29,23 @@
                 </a>
             </li>
             <li class="menu">
+                <a href="#polls" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="flaticon-mail-19"></i>
+                        <span>Polls</span>
+                    </div>
+                    <div>
+                        <i class="flaticon-right-arrow"></i>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="polls" data-parent="#accordionExample">
+                    <li>
+                        <a href="{{route('coming-soon')}}"> All polls </a>
+                    </li>
+                    <li>
+                        <a href="{{route('coming-soon')}}"> Create </a>
+                    </li>
+                </ul>
                 <a href="#mailing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
                         <i class="flaticon-mail-19"></i>
@@ -46,29 +63,15 @@
                         <a href="{{route('coming-soon')}}"> Mailbox </a>
                     </li>
                     <li>
-                        <a href="{{route('coming-soon')}}"> Mailbox With Chat </a>
-                    </li>
-                    <li>
                         <a href="{{route('coming-soon')}}"> Newsletter </a>
                     </li>
                     <li>
-                        <a href="{{route('coming-soon')}}"> Scheduler </a>
-                    </li>
-                    <li>
-                        <a href="{{route('coming-soon')}}" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"> Calendar <i class="flaticon-right-arrow"></i> </a>
-                        <ul class="collapse list-unstyled sub-submenu" id="apps-calendars" data-parent="#apps-calendars">
-                            <li>
-                                <a href="apps_basic_calendar.html"> Basic </a>
-                            </li>
-                            <li>
-                                <a href="apps_full_calendar.html"> Full Calendar </a>
-                            </li>
-                            <li>
-                                <a href="apps_drag_n_drop_calendar.html"> Drag n Drop </a>
-                            </li>
-                        </ul>
+                        <a href="{{route('coming-soon')}}"> Todo </a>
                     </li>
                 </ul>
+
+                {{-- POLLS --}}
+
             </li>
             {{-- <li class="menu">
                 <a href="#ecommerce" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
