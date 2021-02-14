@@ -43,8 +43,12 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @php
+                                        $serial_number = 0
+                                    @endphp
+                                    @foreach ($polls as $poll)
                                     <tr>
-                                        <td class="checkbox-column"> 1 </td>
+                                        <td class="checkbox-column"> {{$serial_number += 1}}</td>
                                         <td class="customer-name-1">BV25532</td>
                                         <td class="">Class Govenor</td>
                                         <td>Private</td>
@@ -56,30 +60,18 @@
                                                 <span class="label label-success" style="color: green">Approved</span>
                                             </div>
                                         </td>
-                                        {{-- <td class="text-center">
-                                            <div class="dropdown custom-dropdown">
-                                                <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-                                                    <i class="flaticon-dot-three"></i>
-                                                </a>
-
-                                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
-                                                    <a class="dropdown-item" href="javascript:void(0);">View</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Edit</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">View Response</a>
-                                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                                </div>
-                                            </div>
-                                        </td> --}}
                                         <td class="text-center">
                                             <ul class="table-controls">
                                                 <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="flaticon-edit  p-1 br-6 mb-1"></i></a></li>
                                                 <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="flaticon-delete  p-1 br-6 mb-1"></i></a></li>
-                                                <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Result"><i class="flaticon-delete  p-1 br-6 mb-1"></i></a></li>
+                                                <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Result"><i class="flaticon-delete-6  p-1 br-6 mb-1"></i></a></li>
                                             </ul>
                                         </td>
 
+
                                     </tr>
 
+                                    @endforeach
                                 </tbody>
                             </table>
                         </div>
