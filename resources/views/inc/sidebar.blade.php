@@ -40,7 +40,7 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="polls" data-parent="#accordionExample">
                     <li>
-                        <a href="{{route('coming-soon')}}"> All polls </a>
+                        <a href="{{route('polls')}}"> All polls </a>
                     </li>
                     <li>
                         <a href="{{route('coming-soon')}}"> Create </a>
