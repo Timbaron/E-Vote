@@ -35,14 +35,14 @@
                                         @error('position')
                                             <span style="color: red">Invalid Name</span>
                                         @enderror
-                                        <input type="text" class="form-control" name="position" id="inputEmail4" placeholder="E.g President" value="{{old('position')}}">
+                                        <input type="text" class="form-control" name="position" id="inputEmail4" placeholder="E.g President" value="{{old('position')}}" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Candidates</label>
                                         @error('Candidates')
                                             <span style="color: red">Invalid Candidate</span>
                                         @enderror
-                                        <input type="text" name="Candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{old('Candidates')}}" multiple>
+                                        <input type="text" name="Candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{old('Candidates')}}" multiple required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -61,11 +61,11 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="0" id="visibility" value="{{old('visibility')}}" selected>
+                                                        <input type="radio" name="visibility" value="0" id="visibility" value="{{old('visibility')}}" selected required>
                                                         <label>Public</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="1" value="{{old('visibility')}}">
+                                                        <input type="radio" name="visibility" value="1" value="{{old('visibility')}}" required>
                                                         <label>Private</label>
                                                     </div>
                                                 </div>
@@ -87,11 +87,11 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="0" value="{{old('notify_me')}}" selected>
+                                                        <input type="radio" name="notify_me" value="0" value="{{old('notify_me')}}" selected required>
                                                         <label>No</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="1" value="{{old('notify_me')}}">
+                                                        <input type="radio" name="notify_me" value="1" value="{{old('notify_me')}}" required>
                                                         <label>Yes</label>
                                                     </div>
                                                 </div>
@@ -155,10 +155,10 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row justify-content-between">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="date" name="start_date" value="{{old('start_date')}}">
+                                                        <input type="date" name="start_date" value="{{old('start_date')}}" required>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="date" name="end_date" value="{{old('end_date')}}">
+                                                        <input type="date" name="end_date" value="{{old('end_date')}}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,10 +182,10 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row justify-content-between">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="time" name="start_time" value="{{old('start_time')}}">
+                                                        <input type="time" name="start_time" value="{{old('start_time')}}" required>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="time" name="end_time" value="{{old('end_time')}}">
+                                                        <input type="time" name="end_time" value="{{old('end_time')}}" required>
                                                     </div>
                                                 </div>
                                             </div>
