@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PollRequest;
 use App\Models\Poll;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -16,7 +17,7 @@ class PollController extends Controller
      */
     public function index()
     {
-        $polls = Poll::all();
+        $polls = auth()->user()->polls->sortByDesc('created_at');
         return view('polls.all_polls',compact('polls'));
     }
 
@@ -38,6 +39,8 @@ class PollController extends Controller
      */
     public function store(PollRequest $request)
     {
+        $poll_id = 'BV'.rand(11,99) . rand(000,999);
+        $request['poll_id'] = $poll_id;
         auth()->user()->polls()->create($request->all());
         dd("Poll created");
     }

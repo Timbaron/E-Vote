@@ -49,15 +49,33 @@
                                     @foreach ($polls as $poll)
                                     <tr>
                                         <td class="checkbox-column"> {{$serial_number += 1}}</td>
-                                        <td class="customer-name-1">BV25532</td>
-                                        <td class="">Class Govenor</td>
-                                        <td>Private</td>
-                                        <td>14/02/2021</td>
-                                        <td>18/02/2021</td>
+                                        <td class="customer-name-1">{{$poll->poll_id}}</td>
+                                        <td class="">{{$poll->position}}</td>
+                                        <td>
+                                            @if ($poll->visibility == false)
+                                                <span style="color: greenyellow">Public</span>
+                                            @else
+                                                <span style="color: green">Private</span>
+                                            @endif
+                                        </td>
+                                        <td>{{$poll->start_date}}</td>
+                                        <td>{{$poll->end_date}}</td>
                                         <td>
                                             <div class="d-flex">
                                                 <div class=" align-self-center d-m-success  mr-1 data-marker"></div>
-                                                <span class="label label-success" style="color: green">Approved</span>
+                                                    <?php
+                                                        @include('inc.check_poll_status');
+                                                        if ($poll['status'] == 'ended') { ?>
+                                                            <span class="label label-success" style="color: red">Ended</span>
+                                                        <?php }
+                                                        elseif ($poll['status' == 'running']) { ?>
+                                                            <span class="label label-success" style="color: yellow">Running</span>
+                                                       <?php }
+                                                        elseif ($poll['status' == 'pending']) { ?>
+                                                            <span class="label label-success" style="color: green">Pending</span>
+                                                       <?php }
+                                                    ?>
+                                                </span>
                                             </div>
                                         </td>
                                         <td class="text-center">
