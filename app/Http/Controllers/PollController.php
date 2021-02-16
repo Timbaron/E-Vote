@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\PollRequest;
 use App\Models\Poll;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PollController extends Controller
 {
@@ -37,7 +38,8 @@ class PollController extends Controller
      */
     public function store(PollRequest $request)
     {
-        return $request;
+        auth()->user()->polls()->create($request->all());
+        dd("Poll created");
     }
 
     /**
