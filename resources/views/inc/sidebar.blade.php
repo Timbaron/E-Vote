@@ -43,7 +43,7 @@
                         <a href="{{route('polls')}}"> All polls </a>
                     </li>
                     <li>
-                        <a href="{{route('coming-soon')}}"> Create </a>
+                        <a href="{{route('poll.create')}}"> Create </a>
                     </li>
                 </ul>
                 <a href="#mailing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

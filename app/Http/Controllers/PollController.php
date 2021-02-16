@@ -25,7 +25,7 @@ class PollController extends Controller
      */
     public function create()
     {
-        //
+        return view('polls.create');
     }
 
     /**
