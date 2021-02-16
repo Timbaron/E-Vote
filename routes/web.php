@@ -21,6 +21,7 @@ Route::get('/', function () {
 Route::middleware(['auth'])->group(function () {
     Route::get('polls',[PollController::class,'index'])->name('polls');
     Route::get('poll/create',[PollController::class,'create'])->name('poll.create');
+    Route::post('poll/store',[PollController::class, 'store'])->name('poll.store');
 });
 Route::get('coming-soon',[HomeController::class,'coming_soon'])->name('coming-soon');
 Auth::routes();

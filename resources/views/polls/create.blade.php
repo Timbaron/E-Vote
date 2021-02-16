@@ -27,15 +27,22 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form>
+                            <form action="{{route('poll.store')}}" method="POST">
+                                @csrf
                                 <div class="form-row mb-4">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Position</label>
-                                        <input type="text" class="form-control" id="inputEmail4" placeholder="E.g President">
+                                        @error('position')
+                                            <span style="color: red">Invalid Name</span>
+                                        @enderror
+                                        <input type="text" class="form-control" name="position" id="inputEmail4" placeholder="E.g President" value="{{old('position')}}">
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Candidates</label>
-                                        <input type="text" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" multiple>
+                                        @error('Candidates')
+                                            <span style="color: red">Invalid Candidate</span>
+                                        @enderror
+                                        <input type="text" name="Candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{old('Candidates')}}" multiple>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -45,17 +52,20 @@
                                                 <div class="row">
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>Visibility</h4>
+                                                        @error('visibility')
+                                                            <span style="color: red">Select a valid visibility</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="0" id="visibility" selected>
+                                                        <input type="radio" name="visibility" value="0" id="visibility" value="{{old('visibility')}}" selected>
                                                         <label>Public</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="1">
+                                                        <input type="radio" name="visibility" value="1" value="{{old('visibility')}}">
                                                         <label>Private</label>
                                                     </div>
                                                 </div>
@@ -68,17 +78,20 @@
                                                 <div class="row">
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>Do you want to recieve notifications?</h4>
+                                                        @error('notify_me')
+                                                            <span style="color: red">Select either Yes or No</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="0" selected>
+                                                        <input type="radio" name="notify_me" value="0" value="{{old('notify_me')}}" selected>
                                                         <label>No</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="1">
+                                                        <input type="radio" name="notify_me" value="1" value="{{old('notify_me')}}">
                                                         <label>Yes</label>
                                                     </div>
                                                 </div>
@@ -93,6 +106,9 @@
                                                 <div class="row">
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>If visibility is Private, Enter emails of allowed voters <span style="color: red">(Select checkbox if invite link should be sent.)</span></h4>
+                                                        @error('allowed_voters')
+                                                            <span style="color: red">This field is required <b>IF AND ONLY IF</b>Visibility is private</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
@@ -102,7 +118,7 @@
 
                                                         <div class="widget-content widget-content-area">
                                                             <div class="input-group mb-4">
-                                                                <textarea name="allowed_voters" id="" cols="90" rows="5" placeholder="E.g abc@def.com , xyz@kpk.com"></textarea>
+                                                                <textarea name="allowed_voters" id="" cols="90" rows="5" placeholder="E.g abc@def.com , xyz@kpk.com">{{old('allowed_voters')}}</textarea>
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <label class="switch s-secondary mt-2">
@@ -127,16 +143,22 @@
                                                 <div class="row">
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>Start Date - End Date</h4>
+                                                        @error('start_date')
+                                                            <span style="color: red">Select a valid start date</span>
+                                                        @enderror
+                                                        @error('end_date')
+                                                            <span style="color: red">Select a valid end date</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row justify-content-between">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="date" name="start_date">
+                                                        <input type="date" name="start_date" value="{{old('start_date')}}">
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="date" name="end_date">
+                                                        <input type="date" name="end_date" value="{{old('end_date')}}">
                                                     </div>
                                                 </div>
                                             </div>
@@ -148,16 +170,22 @@
                                                 <div class="row">
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>Start Time - End Time</h4>
+                                                        @error('start_time')
+                                                            <span style="color: red">Select a valid start time</span>
+                                                        @enderror
+                                                        @error('end_time')
+                                                            <span style="color: red">Select a valid end time</span>
+                                                        @enderror
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row justify-content-between">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="time" name="start_time">
+                                                        <input type="time" name="start_time" value="{{old('start_time')}}">
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="time" name="end_time">
+                                                        <input type="time" name="end_time" value="{{old('end_time')}}">
                                                     </div>
                                                 </div>
                                             </div>
