@@ -17,13 +17,14 @@ class PollController extends Controller
      */
     public function index()
     {
-        $today_date = Carbon::now()->toDateString();
-        $today_time = Carbon::now()->toTimeString();
+        // $today_date = Carbon::now()->toDateString();
+        // $today_time = Carbon::now()->toTimeString();
+        $today = Carbon::now();
         $polls = auth()->user()->polls->sortByDesc('created_at');
         // if($today->toDateTimeString() <= $polls->start_date .' ' .$polls->start_time){
         //     return "Today is less than yesterday";
         // }
-        return view('polls.all_polls',compact('polls','today_date','today_time'));
+        return view('polls.all_polls',compact('polls','today'));
     }
 
     /**

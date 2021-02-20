@@ -1,15 +1,16 @@
 <?php
+    $poll['status'] = '';
 
-    $poll['status'] = $today_date;
-    // if ($today->toDateTimeString() < $polls->start_date) {
-    //     $poll['status'] = 'pending';
-    // }
-    // elseif ($today->toDateTimeString() >= $polls->start_date .' ' .$polls->start_time && $today->toDateTimeString() <= $polls->end_date .' ' .$polls->end_time) {
-    //     $poll['status'] = "running";
-    // }
-    // elseif($today->toDateTimeString() >= $polls->end_date .' ' .$polls->end_time)
-    // {
-    //     $poll['status'] = "ended";
-    // }
+    if ($today->toDateTimeString() < $poll->start_date .' ' .$poll->start_time ) {
+        $poll['status'] = 'pending';
+    }
+    elseif ($today->toDateTimeString() >= $poll->start_date .' ' .$poll->start_time && $today->toDateTimeString() <= $poll->end_date .' ' .$poll->end_time) {
+        $poll['status'] = "running";
+    }
+    elseif($today->toDateTimeString() >= $poll->end_date .' ' .$poll->end_time)
+    {
+        $poll['status'] = "ended";
+    }
 
 ?>
+

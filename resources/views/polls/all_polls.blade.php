@@ -2,7 +2,6 @@
 @include('inc.header')
 @section('content')
 @include('inc.sidebar')
-@include('inc.check_poll_status')
  <!--  BEGIN CONTENT PART  -->
  <div id="content" class="main-content">
     <div class="container">
@@ -63,8 +62,22 @@
                                         <td>{{$poll->end_date}}</td>
                                         <td>
                                             <div class="d-flex">
+                                                @include('inc.check_poll_status')
                                                 <div class=" align-self-center d-m-success  mr-1 data-marker"></div>
-                                                    {{$poll->status}}
+                                                    <?php
+                                                    if($poll->status == 'pending'){ ?>
+                                                        <span style="color: yellow">{{$poll->status}}</span>
+                                                    <?php }
+                                                    elseif ($poll->status == 'running') { ?>
+                                                        <span style="color: green">{{$poll->status}}</span>
+                                                  <?php }
+                                                    elseif ($poll->status == 'ended') { ?>
+                                                        <span style="color: red">{{$poll->status}}</span>
+                                                <?php  }
+                                                else { ?>
+                                                   <span style="color: powderblue">Checking...</span>
+                                               <?php }
+                                                    ?>
                                                 </span>
                                             </div>
                                         </td>
