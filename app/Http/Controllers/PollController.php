@@ -48,7 +48,7 @@ class PollController extends Controller
         $poll_id = 'BV'.rand(11,99) . rand(000,999);
         $request['poll_id'] = $poll_id;
         auth()->user()->polls()->create($request->all());
-        dd("Poll created");
+        return redirect('polls');
     }
 
     /**
