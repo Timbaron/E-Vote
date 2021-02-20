@@ -17,8 +17,13 @@ class PollController extends Controller
      */
     public function index()
     {
+        $today_date = Carbon::now()->toDateString();
+        $today_time = Carbon::now()->toTimeString();
         $polls = auth()->user()->polls->sortByDesc('created_at');
-        return view('polls.all_polls',compact('polls'));
+        // if($today->toDateTimeString() <= $polls->start_date .' ' .$polls->start_time){
+        //     return "Today is less than yesterday";
+        // }
+        return view('polls.all_polls',compact('polls','today_date','today_time'));
     }
 
     /**
