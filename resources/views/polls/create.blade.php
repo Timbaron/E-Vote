@@ -122,7 +122,7 @@
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <label class="switch s-secondary mt-2">
-                                                                            <input type="checkbox" name="send_invite">
+                                                                            <input type="checkbox" name="send_invite" value="1">
                                                                             <span class="slider"></span><br>
                                                                         </label>
                                                                     </div>
