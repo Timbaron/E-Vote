@@ -70,8 +70,8 @@ class PollController extends Controller
      */
     public function edit($id)
     {
-        $poll = Poll::find($id);
-        return $poll;
+        // $poll = Poll::find($id);
+        // return view('polls.edit_polls',compact('poll'));
         // dd($id);
     }
 
@@ -95,6 +95,11 @@ class PollController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $poll = Poll::find($id);
+        if($poll == true)
+        {
+            Poll::destroy($id);
+            return redirect()->back();
+        }
     }
 }

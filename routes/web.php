@@ -23,6 +23,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('poll/create',[PollController::class,'create'])->name('poll.create');
     Route::post('poll/store',[PollController::class, 'store'])->name('poll.store');
     Route::get('poll/edit/{poll_id}', [PollController::class, 'edit'])->name('poll.edit');
+    Route::get('poll/delete/{poll_id}', [PollController::class, 'destroy'])->name('poll.destroy');
 });
 Route::get('coming-soon',[HomeController::class,'coming_soon'])->name('coming-soon');
 Auth::routes();
