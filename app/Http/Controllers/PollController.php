@@ -70,7 +70,9 @@ class PollController extends Controller
      */
     public function edit($id)
     {
-        //
+        $poll = Poll::find($id);
+        return $poll;
+        // dd($id);
     }
 
     /**

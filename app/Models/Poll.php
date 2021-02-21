@@ -9,4 +9,6 @@ class Poll extends Model
 {
     use HasFactory;
     protected $guarded = [];
+    public $incrementing = false;
+    protected  $primaryKey = 'poll_id';
 }

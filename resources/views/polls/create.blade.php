@@ -42,7 +42,7 @@
                                         @error('Candidates')
                                             <span style="color: red">Invalid Candidate</span>
                                         @enderror
-                                        <input type="text" name="candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{old('Candidates')}}" multiple required>
+                                        <input type="text" name="candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{old('candidates')}}" multiple required>
                                     </div>
                                 </div>
                                 <div class="row">
