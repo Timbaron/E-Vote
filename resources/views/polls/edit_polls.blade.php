@@ -6,12 +6,12 @@
     <div class="container">
         <div class="page-header">
             <div class="page-title">
-                <h3>Poll create</h3>
+                <h3>Edit Poll</h3>
                 <div class="crumbs">
                     <ul id="breadcrumbs" class="breadcrumb">
                         <li><a href="index-2.html"><i class="flaticon-home-fill"></i></a></li>
                         <li><a href="{{route('polls')}}">Poll</a></li>
-                        <li class="active"><a href="#">Create</a> </li>
+                        <li class="active"><a href="#">Edit</a> </li>
                     </ul>
                 </div>
             </div>
@@ -22,12 +22,12 @@
                         <div class="widget-header">
                             <div class="row">
                                 <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                    <h4>Poll create</h4>
+                                    <h4>Edit Poll</h4>
                                 </div>
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form action="{{route('poll.store')}}" method="POST">
+                            <form action="/" method="POST">
                                 @csrf
                                 <div class="form-row mb-4">
                                     <div class="form-group col-md-6">
@@ -35,14 +35,14 @@
                                         @error('position')
                                             <span style="color: red">Invalid Name</span>
                                         @enderror
-                                        <input type="text" class="form-control" name="position" id="inputEmail4" placeholder="E.g President" value="{{old('position')}}" required>
+                                        <input type="text" class="form-control" name="position" id="inputEmail4" placeholder="E.g President" value="{{$poll->position}}" required>
                                     </div>
                                     <div class="form-group col-md-6">
                                         <label for="inputPassword4">Candidates</label>
                                         @error('Candidates')
                                             <span style="color: red">Invalid Candidate</span>
                                         @enderror
-                                        <input type="text" name="candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{old('candidates')}}" multiple required>
+                                        <input type="text" name="candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{$poll->candidates}}" multiple required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -61,11 +61,11 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="0" id="visibility" value="{{old('visibility')}}" selected required>
+                                                        <input type="radio" name="visibility" {{@if($poll->visibility) }} selected {{ @endif}} required>
                                                         <label>Public</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="1" value="{{old('visibility')}}" required>
+                                                        <input type="radio" name="visibility" value="{{$poll->visibility}}" required>
                                                         <label>Private</label>
                                                     </div>
                                                 </div>

@@ -49,22 +49,43 @@
                                     @foreach ($polls as $poll)
                                     <tr>
                                         <td class="checkbox-column"> {{$serial_number += 1}}</td>
-                                        <td class="customer-name-1">BV25532</td>
-                                        <td class="">Class Govenor</td>
-                                        <td>Private</td>
-                                        <td>14/02/2021</td>
-                                        <td>18/02/2021</td>
+                                        <td class="customer-name-1">{{$poll->poll_id}}</td>
+                                        <td class="">{{$poll->position}}</td>
+                                        <td>
+                                            @if ($poll->visibility == false)
+                                                <span style="color: greenyellow">Public</span>
+                                            @else
+                                                <span style="color: green">Private</span>
+                                            @endif
+                                        </td>
+                                        <td>{{$poll->start_date}}</td>
+                                        <td>{{$poll->end_date}}</td>
                                         <td>
                                             <div class="d-flex">
+                                                @include('inc.check_poll_status')
                                                 <div class=" align-self-center d-m-success  mr-1 data-marker"></div>
-                                                <span class="label label-success" style="color: green">Approved</span>
+                                                    <?php
+                                                    if($poll->status == 'pending'){ ?>
+                                                        <span style="color: yellow">{{$poll->status}}</span>
+                                                    <?php }
+                                                    elseif ($poll->status == 'running') { ?>
+                                                        <span style="color: green">{{$poll->status}}</span>
+                                                  <?php }
+                                                    elseif ($poll->status == 'ended') { ?>
+                                                        <span style="color: red">{{$poll->status}}</span>
+                                                <?php  }
+                                                else { ?>
+                                                   <span style="color: powderblue">Checking...</span>
+                                               <?php }
+                                                    ?>
+                                                </span>
                                             </div>
                                         </td>
                                         <td class="text-center">
                                             <ul class="table-controls">
-                                                <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="flaticon-edit  p-1 br-6 mb-1"></i></a></li>
-                                                <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="flaticon-delete  p-1 br-6 mb-1"></i></a></li>
-                                                <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Result"><i class="flaticon-delete-6  p-1 br-6 mb-1"></i></a></li>
+                                                <li><a href="{{route('poll.edit',$poll->poll_id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="flaticon-edit  p-1 br-6 mb-1"></i></a></li>
+                                                <li><a href="{{route('poll.destroy',$poll->poll_id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="flaticon-delete  p-1 br-6 mb-1"></i></a></li>
+                                                <li><a href="javascript:void(0);" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Result"><i class="flaticon-three-line-menu  p-1 br-6 mb-1"></i></a></li>
                                             </ul>
                                         </td>
 

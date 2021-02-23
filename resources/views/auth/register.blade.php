@@ -1,7 +1,7 @@
-@extends('layouts.app')
+@extends('layouts.auth')
 
 @section('content')
-<div class="container">
+{{-- <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
@@ -73,5 +73,56 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
+<form class="form-login" action="{{route('register')}}" method="POST">
+    @csrf
+    <div class="row">
+        <div class="col-md-12 text-center mb-4">
+            <img alt="logo" src="{{asset('imgf/logo-3.png')}}" class="theme-logo">
+        </div>
+        <div class="col-md-12">
+
+            <div class="social text-center">
+                <h5 class="mb-4">Sign up with</h5>
+                <button type="button" class="btn btn-outline-primary rounded-circle mb-3 mr-2"><i class="flaticon-facebook-logo flaticon-circle-p"></i></button>
+                <button type="button" class="btn btn-outline-info rounded-circle mb-3 mr-2"><i class="flaticon-twitter-logo flaticon-circle-p"></i></button>
+                <button type="button" class="btn btn-outline-danger rounded-circle mb-3 mr-2"><i class="flaticon-google-plus-bold flaticon-circle-p"></i></button>
+            </div>
+
+            <div class="division mt-4 mb-5">
+                <div class="line line-left"></div>
+                    <span>or</span>
+                <div class="line line-right"></div>
+            </div>
+            <div>
+                @error('email')
+                    <span style="color: red"><i><b>Invalid Email Address or Password</b></i></span>
+                @enderror
+            </div>
+            <label for="inputEmail" class="">User Name</label>
+            <input type="text" id="inputEmail" name="username" class="form-control mb-4" placeholder="User Name" required >
+            <label for="inputEmail" class="">Email Address</label>
+            <input type="email" id="inputEmail" name="email" class="form-control mb-4" placeholder="Login" required >
+            <label for="inputPassword" class="">Password</label>
+            <input type="password" id="inputPassword" name="password" class="form-control mb-5" placeholder="Password" required>
+            <label for="inputPassword" class="">Confirm Password</label>
+            <input type="password" id="inputPassword" name="password_confirmation" class="form-control mb-5" placeholder="Password" required>
+
+            {{-- <div class="checkbox d-flex justify-content-center mb-3">
+                <div class="custom-control custom-checkbox mr-3">
+                    <input type="checkbox" class="custom-control-input" id="customCheck1" value="remember" name="remember">
+                    <label class="custom-control-label" for="customCheck1">Remember me</label>
+                </div>
+            </div> --}}
+            <button type="submit" class="btn btn-gradient-dark btn-rounded btn-block">Sign up</button>
+        </div>
+
+        <div class="col-md-12">
+            <div class="login-text text-center">
+                <p class="mt-3 text-black">Have an Account? <a href="{{ route('login') }}" class="">Login </a></p>
+            </div>
+        </div>
+    </div>
+</form>
 @endsection
+

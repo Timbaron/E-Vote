@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PollRequest;
 use App\Models\Poll;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class PollController extends Controller
 {
@@ -14,8 +17,14 @@ class PollController extends Controller
      */
     public function index()
     {
-        $polls = Poll::all();
-        return view('polls.all_polls',compact('polls'));
+        // $today_date = Carbon::now()->toDateString();
+        // $today_time = Carbon::now()->toTimeString();
+        $today = Carbon::now();
+        $polls = auth()->user()->polls->sortByDesc('created_at');
+        // if($today->toDateTimeString() <= $polls->start_date .' ' .$polls->start_time){
+        //     return "Today is less than yesterday";
+        // }
+        return view('polls.all_polls',compact('polls','today'));
     }
 
     /**
@@ -34,9 +43,12 @@ class PollController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(PollRequest $request)
     {
-        //
+        $poll_id = 'BV'.rand(11,99) . rand(000,999);
+        $request['poll_id'] = $poll_id;
+        auth()->user()->polls()->create($request->all());
+        return redirect('polls');
     }
 
     /**
@@ -58,7 +70,9 @@ class PollController extends Controller
      */
     public function edit($id)
     {
-        //
+        $poll = Poll::find($id);
+        return view('polls.edit_polls',compact('poll'));
+        dd($id);
     }
 
     /**
@@ -81,6 +95,11 @@ class PollController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $poll = Poll::find($id);
+        if($poll == true)
+        {
+            Poll::destroy($id);
+            return redirect()->back();
+        }
     }
 }

@@ -15,14 +15,17 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('test');
-});
 Route::middleware(['auth'])->group(function () {
+    Route::get('/dashboard', function(){
+        return view('dashboard');
+    });
     Route::get('polls',[PollController::class,'index'])->name('polls');
     Route::get('poll/create',[PollController::class,'create'])->name('poll.create');
+    Route::post('poll/store',[PollController::class, 'store'])->name('poll.store');
+    Route::get('poll/edit/{poll_id}', [PollController::class, 'edit'])->name('poll.edit');
+    Route::get('poll/delete/{poll_id}', [PollController::class, 'destroy'])->name('poll.destroy');
+    Route::get('coming-soon',[HomeController::class,'coming_soon'])->name('coming-soon');
 });
-Route::get('coming-soon',[HomeController::class,'coming_soon'])->name('coming-soon');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
