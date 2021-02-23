@@ -23,13 +23,12 @@
 </head>
 <body>
     <div id="app">
-            <div class="main-container" id="container">
+        <div class="main-container" id="container">
 
-                <div class="overlay"></div>
-                <div class="cs-overlay"></div>
-                     @yield('content')
-            </div>
-
+            <div class="overlay"></div>
+            <div class="cs-overlay"></div>
+                    @yield('content')
+        </div>
     </div>
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{asset('js/libs/jquery-3.1.1.min.js')}}"></script>
