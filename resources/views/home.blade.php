@@ -1,26 +1,6 @@
 @extends('layouts.landing')
 
 @section('content')
-{{-- <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
-
 <div id="navHeadWrapper" class="navHeaderWrapper header-image">
     <!-- NavBar -->
     <!-- Brand -->
@@ -29,7 +9,7 @@
             <div class="container">
 
                 <div class="col-xl-4 col-lg-3 col-6 mx-auto ">
-                    <a class="navbar-brand" href="#"><h4>B-Vote</h4></a>
+                    <a class="navbar-brand" href="/"><h4>B-Vote</h4></a>
                 </div>
 
                 <div class="col-6 text-right d-lg-none d-block">
