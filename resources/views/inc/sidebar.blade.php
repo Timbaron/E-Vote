@@ -72,9 +72,27 @@
                         <a href="{{route('coming-soon')}}"> Blog </a>
                     </li>
                 </ul>
-
+                <a href="#account" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+                    <div class="">
+                        <i class="flaticon-mail-19"></i>
+                        <span>My Account</span>
+                    </div>
+                    <div>
+                        <i class="flaticon-right-arrow"></i>
+                    </div>
+                </a>
+                <ul class="collapse submenu list-unstyled" id="account" data-parent="#accordionExample">
+                    <li>
+                        <a href="{{route('polls')}}">Loading....  </a>
+                    </li>
+                    <li>
+                        <a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> Logout </a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                            @csrf
+                        </form>
+                    </li>
+                </ul>
                 {{-- POLLS --}}
-
             </li>
 
         </ul>
