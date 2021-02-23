@@ -27,7 +27,7 @@ class HomeController extends Controller
     }
     public function coming_soon()
     {
-        // return view('coming_soon');
-        return "COMING SOON";
+        return view('coming_soon');
+        // return "COMING SOON";
     }
 }
