@@ -96,13 +96,14 @@
             </div>
             <div>
                 @error('email')
-                    <span style="color: red"><i><b>Invalid Email Address or Password</b></i></span>
+                    <span style="color: red"><i><b>Email is already in use</b></i></span>
                 @enderror
             </div>
-            <label for="inputEmail" class="">User Name</label>
-            <input type="text" id="inputEmail" name="username" class="form-control mb-4" placeholder="User Name" required >
             <label for="inputEmail" class="">Email Address</label>
             <input type="email" id="inputEmail" name="email" class="form-control mb-4" placeholder="Login" required >
+            @error('password')
+                <span style="color: red"><i><b>Password do not match</b></i></span>
+            @enderror <br>
             <label for="inputPassword" class="">Password</label>
             <input type="password" id="inputPassword" name="password" class="form-control mb-5" placeholder="Password" required>
             <label for="inputPassword" class="">Confirm Password</label>
