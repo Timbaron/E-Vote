@@ -45,6 +45,9 @@
                     <li>
                         <a href="{{route('poll.create')}}"> Create </a>
                     </li>
+                    <li>
+                        <a href="{{route('poll.cast.new')}}"> Cast </a>
+                    </li>
                 </ul>
                 <a href="#mailing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">

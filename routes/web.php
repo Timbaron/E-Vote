@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PollController;
+use App\Http\Controllers\VoteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,6 +26,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('poll/edit/{poll_id}', [PollController::class, 'edit'])->name('poll.edit');
     Route::get('poll/delete/{poll_id}', [PollController::class, 'destroy'])->name('poll.destroy');
     Route::get('coming-soon',[HomeController::class,'coming_soon'])->name('coming-soon');
+
+    // CAST VOTE
+    Route::get('/poll/cast/new', [VoteController::class,'index'])->name('poll.cast.new');
+    Route::get('/poll/cast/',[VoteController::class, 'create'])->name('poll.cast');
 });
 Auth::routes();
 
