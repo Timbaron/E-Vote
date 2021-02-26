@@ -44,7 +44,7 @@ class VoteController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CastRequest $request)
+    public function store(Request $request)
     {
         //
     }
