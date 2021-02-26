@@ -29,12 +29,13 @@ class VoteController extends Controller
         $poll = Poll::find($request->poll_code);
         if($poll == [])
         {
-            return redirect()->back()->with('poll_not_found_error','Poll Not found');
+            notify()->error('Poll not found');
         }
-        else
-        {
-            return $poll;
+        $poll['candidates'] = json_decode($poll->candidates);
+        if($poll['allowed_voters']){
+            $poll['allowed_voters'] = json_decode($poll->allowed_voters);
         }
+        return view('polls.cast',compact('poll'));
     }
 
     /**
@@ -91,5 +92,9 @@ class VoteController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function test(Request $request)
+    {
+        return $request->all();
     }
 }
