@@ -47,7 +47,8 @@ class PollController extends Controller
     {
         $poll_id = 'BV'.rand(11,99) . rand(000,999);
         // Convert Candidates to array then to Json
-        $candidates = explode(',',$request['candidates']);
+        $candidates = strtolower($request['candidates']);
+        $candidates = explode(',',$candidates);
         $candidates = json_encode($candidates);
         $request['candidates'] = $candidates;
 

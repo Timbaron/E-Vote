@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CastRequest;
 use App\Models\Poll;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+use function PHPSTORM_META\type;
 
 class VoteController extends Controller
 {
@@ -30,10 +33,16 @@ class VoteController extends Controller
         if($poll == [])
         {
             notify()->error('Poll not found');
+            return redirect()->back();
         }
-        $poll['candidates'] = json_decode($poll->candidates);
-        if($poll['allowed_voters']){
-            $poll['allowed_voters'] = json_decode($poll->allowed_voters);
+        $poll->candidates = json_decode($poll->candidates);
+        if(!empty($poll->allowed_voters)){
+            $poll->allowed_voters = json_decode($poll->allowed_voters);
+            if(!in_array(Auth::user()->email,$poll->allowed_voters,true))
+            {
+                notify()->error('You are not allowed to take place in the poll');
+                return redirect()->back();
+            }
         }
         return view('polls.cast',compact('poll'));
     }
