@@ -46,9 +46,26 @@ class PollController extends Controller
     public function store(PollRequest $request)
     {
         $poll_id = 'BV'.rand(11,99) . rand(000,999);
+        // Convert Candidates to array then to Json
+        $candidates = explode(',',$request['candidates']);
+        $candidates = json_encode($candidates);
+        $request['candidates'] = $candidates;
+
         $request['poll_id'] = $poll_id;
+        if($request['visibility'] == '0' && !empty($request['allowed_voters'])){
+            $request['allowed_voters'] = '';
+            $request['send_invite'] = '';
+        }
+        // Convert Emails to array then to Json
+        if(!empty($request['allowed_voters'])){
+            $allowed_voters = explode(',',$request['allowed_voters']);
+            $allowed_voters = json_encode($allowed_voters);
+            $request['allowed_voters'] = $allowed_voters;
+        }
+        // return $request;
         auth()->user()->polls()->create($request->all());
         return redirect('polls');
+
     }
 
     /**

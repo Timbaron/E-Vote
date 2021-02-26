@@ -61,11 +61,11 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="0" id="visibility" value="{{old('visibility')}}" selected required>
+                                                        <input type="radio" name="visibility" value="0" id="visibility" selected required>
                                                         <label>Public</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="1" value="{{old('visibility')}}" required>
+                                                        <input type="radio" name="visibility" value="1" id="private" required>
                                                         <label>Private</label>
                                                     </div>
                                                 </div>
@@ -99,11 +99,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" id="allowed_email" style="display: none">
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-12 layout-spacing">
                                         <div class="statbox widget box box-shadow">
                                             <div class="widget-header">
-                                                <div class="row">
+                                                <div class="row" >
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>If visibility is Private, Enter emails of allowed voters <span style="color: red">(Select checkbox if invite link should be sent.)</span></h4>
                                                         @error('allowed_voters')
@@ -136,6 +136,19 @@
                                         </div>
                                     </div>
                                 </div>
+                                <script>
+                                    var private = document.getElementById('private');
+                                    var public = document.getElementById('public');
+                                    var allowed_email = document.getElementById('allowed_email');
+                                    private.onclick = function() {
+                                    console.log(this);
+                                    if(!this.checked) {
+                                        $('#allowed_email').hide();
+                                    } else {
+                                        allowed_email.style['display'] = 'block';
+                                    }
+                                    };
+                                </script>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                                         <div class="statbox widget box box-shadow">
