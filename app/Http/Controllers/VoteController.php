@@ -93,8 +93,10 @@ class VoteController extends Controller
     {
         //
     }
-    public function test(Request $request)
+    public function cast(Request $request)
     {
-        return $request->all();
+        auth()->user()->cast()->create($request->all());
+        smilify('success','Thank you!!! You Candidate has been submitted!!');
+        return redirect('/poll/cast/new');
     }
 }

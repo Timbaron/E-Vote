@@ -35,11 +35,12 @@
                         </div>
 
                         <div class="news-feeds-body">
-                            <form action="/test" method="POST">
+                            <form action="/cast" method="GET">
                                 @csrf
                                 <div class="table-responsive  mt-3">
                                     <table class="table">
                                         <tbody>
+                                            <input type="hidden" name="poll_id" value="{{$poll->id}}">
                                             @foreach ($poll->candidates as $poll->candidate)
                                             <tr>
                                                 <td>
