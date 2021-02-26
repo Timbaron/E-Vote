@@ -54,7 +54,7 @@ class PollController extends Controller
         $request['poll_id'] = $poll_id;
         if($request['visibility'] == '0' && !empty($request['allowed_voters'])){
             $request['allowed_voters'] = '';
-            $request['send_invite'] = '';
+            $request['send_invite'] = null;
         }
         // Convert Emails to array then to Json
         if(!empty($request['allowed_voters'])){
@@ -64,6 +64,7 @@ class PollController extends Controller
         }
         // return $request;
         auth()->user()->polls()->create($request->all());
+        notify()->success('Poll Created');
         return redirect('polls');
 
     }
@@ -116,6 +117,7 @@ class PollController extends Controller
         if($poll == true)
         {
             Poll::destroy($id);
+            notify()->info('Poll successfully deleted');
             return redirect()->back();
         }
     }

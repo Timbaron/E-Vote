@@ -19,7 +19,7 @@
     <link href="{{asset('plugins/charts/chartist/chartist.css')}}" rel="stylesheet" type="text/css">
     <link href="{{asset('css/default-dashboard/style.css')}}" rel="stylesheet" type="text/css" />
     <!-- END PAGE LEVEL PLUGINS/CUSTOM STYLES -->
-
+    @notifyCss
 </head>
 <body>
     <div id="app">
@@ -27,8 +27,8 @@
 
             <div class="overlay"></div>
             <div class="cs-overlay"></div>
-                    @yield('content')
-        </div>
+                @yield('content')
+            </div>
     </div>
     <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
     <script src="{{asset('js/libs/jquery-3.1.1.min.js')}}"></script>
@@ -54,6 +54,7 @@
     <script src="{{asset('plugins/progressbar/progressbar.min.js')}}"></script>
     <script src="{{asset('js/default-dashboard/default-custom.js')}}"></script>
     <script src="{{asset('js/support-chat.js')}}"></script>
+    @notifyJs
     <!-- BEGIN PAGE LEVEL PLUGINS/CUSTOM SCRIPTS -->
 </body>
 </html>
