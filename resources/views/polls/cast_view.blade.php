@@ -7,13 +7,12 @@
     <div class="container">
         <div class="page-header">
             <div class="page-title">
-                <h3>Input Group <small>Rounded</small></h3>
+                <h3>Search Poll</h3>
                 <div class="crumbs">
                     <ul id="breadcrumbs" class="breadcrumb">
                         <li><a href="index-2.html"><i class="flaticon-home-fill"></i></a></li>
-                        <li><a href="#">Forms</a></li>
-                        <li><a href="#">Input Group</a> </li>
-                        <li class="active"><a href="#">Rounded</a> </li>
+                        <li><a href="/polls">Poll</a></li>
+                        <li class="active"><a href="#">Search</a> </li>
                     </ul>
                 </div>
             </div>

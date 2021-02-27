@@ -4,11 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CastRequest;
 use App\Models\Poll;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 use function PHPSTORM_META\type;
-
 class VoteController extends Controller
 {
     /**
@@ -28,6 +28,7 @@ class VoteController extends Controller
      */
     public function create(Request $request)
     {
+
         // return $request;
         $poll = Poll::find($request->poll_code);
         if($poll == [])
@@ -42,6 +43,27 @@ class VoteController extends Controller
             {
                 notify()->error('You are not allowed to take place in the poll');
                 return redirect()->back();
+            }
+            // include view('inc.check_poll_status');
+            function poll_status()
+            {
+                $today = Carbon::now();
+                $poll['status'] = '';
+
+                if ($today->toDateTimeString() < $poll['start_date'] .' ' .$poll['start_time'] ) {
+                    return 'pending';
+                }
+                elseif ($today->toDateTimeString() >= $poll['start_date'] .' ' .$poll['start_time'] && $today->toDateTimeString() <= $poll['end_date'] .' ' .$poll['end_time']) {
+                    return "running";
+                }
+                elseif($today->toDateTimeString() >= $poll['end_date'] .' ' .$poll['end_time'])
+                {
+                    return "ended";
+                }
+            }
+            if(poll_status() == 'running')
+            {
+                return 'running';
             }
         }
         return view('polls.cast',compact('poll'));
