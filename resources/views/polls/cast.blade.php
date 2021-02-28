@@ -40,7 +40,7 @@
                                 <div class="table-responsive  mt-3">
                                     <table class="table">
                                         <tbody>
-                                            <input type="hidden" name="poll_id" value="{{$poll->id}}">
+                                            <input type="hidden" name="poll_id" value="{{$poll->poll_id}}">
                                             @foreach ($poll->candidates as $poll->candidate)
                                             <tr>
                                                 <td>

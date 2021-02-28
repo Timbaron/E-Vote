@@ -128,11 +128,25 @@ class VoteController extends Controller
     {
         auth()->user()->cast()->create($request->all());
         smilify('success','Thank you!!! You Candidate has been submitted!!');
-        return redirect('/poll/cast/new');
+        return redirect(route('poll.cast.new'));
     }
     public function result($id)
     {
-        $result = Result::findOrFail($id);
-        return view('polls.result',compact('result'));
+        // return $id;
+        $candidates = [];
+        $poll_detail = DB::table('polls')->where('id',$id)->first();
+        $results = DB::select('select * from results where id = ?', [$id]);
+        // $poll = DB::select('select * from polls where id = ?', [$id])->first();
+        dd($results);
+        foreach($results as $result)
+        {
+            $candidates[] = $result->candidate;
+        }
+        // $vote_counts = array_count_values($candidates);
+        // return $candidates;
+        // return $vote_count;
+
+
+        // return view('polls.result',compact('candidates'));
     }
 }
