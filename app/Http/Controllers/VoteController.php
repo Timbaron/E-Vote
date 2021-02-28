@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\CastRequest;
 use App\Models\Poll;
+use App\Models\Result;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,7 +29,7 @@ class VoteController extends Controller
      * @return \Illuminate\Http\Response
      */
 
-    public function create(Request $request)
+    public function  create(Request $request)
     {
         $poll = Poll::findOrFail($request->poll_code);
         $today = Carbon::now();
@@ -128,5 +129,10 @@ class VoteController extends Controller
         auth()->user()->cast()->create($request->all());
         smilify('success','Thank you!!! You Candidate has been submitted!!');
         return redirect('/poll/cast/new');
+    }
+    public function result($id)
+    {
+        $result = Result::findOrFail($id);
+        return view('polls.result',compact('result'));
     }
 }

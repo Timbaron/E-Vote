@@ -30,6 +30,9 @@ Route::middleware(['auth'])->group(function () {
     // CAST VOTE
     Route::get('/poll/cast/new', [VoteController::class,'index'])->name('poll.cast.new');
     Route::get('/poll/cast/',[VoteController::class, 'create'])->name('poll.cast');
+
+    // View Result
+    Route::get('/poll/result/{id}', [VoteController::class, 'result'])->name('poll.result');
 });
 Auth::routes();
 Route::get('/cast', [VoteController::class,'cast']);
