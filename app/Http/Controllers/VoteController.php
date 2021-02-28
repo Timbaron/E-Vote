@@ -7,6 +7,7 @@ use App\Models\Poll;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 use function PHPSTORM_META\type;
 class VoteController extends Controller
@@ -26,11 +27,13 @@ class VoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create(Request $request)
     {
-
-        // return $request;
-        $poll = Poll::find($request->poll_code);
+        $poll = Poll::findOrFail($request->poll_code);
+        $today = Carbon::now();
+        $poll['status'] = '';
+        $results = DB::select('select * from results where poll_id = ? and user_id = ?', [$poll->id,Auth::user()->id]);
         if($poll == [])
         {
             notify()->error('Poll not found');
@@ -44,29 +47,25 @@ class VoteController extends Controller
                 notify()->error('You are not allowed to take place in the poll');
                 return redirect()->back();
             }
-            // include view('inc.check_poll_status');
-            function poll_status()
-            {
-                $today = Carbon::now();
-                $poll['status'] = '';
-
-                if ($today->toDateTimeString() < $poll['start_date'] .' ' .$poll['start_time'] ) {
-                    return 'pending';
-                }
-                elseif ($today->toDateTimeString() >= $poll['start_date'] .' ' .$poll['start_time'] && $today->toDateTimeString() <= $poll['end_date'] .' ' .$poll['end_time']) {
-                    return "running";
-                }
-                elseif($today->toDateTimeString() >= $poll['end_date'] .' ' .$poll['end_time'])
-                {
-                    return "ended";
-                }
-            }
-            if(poll_status() == 'running')
-            {
-                return 'running';
-            }
+        }
+        if ($today->toDateTimeString() < $poll['start_date'] .' ' .$poll['start_time'] )
+        {
+            notify()->info('This Poll has not started');
+            return redirect()->back();
+        }
+        elseif($today->toDateTimeString() >= $poll['end_date'] .' ' .$poll['end_time'])
+        {
+            notify()->info('This Poll has been Concluded');
+            return redirect()->back();
+        }
+        if($results)
+        {
+            notify()->error('You have already completed this poll');
+            return redirect()->back();
         }
         return view('polls.cast',compact('poll'));
+
+
     }
 
     /**

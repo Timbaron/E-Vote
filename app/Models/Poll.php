@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use Facade\Ignition\QueryRecorder\Query;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -19,4 +21,8 @@ class Poll extends Model
     public function user(){
         return $this->belongsTo(User::class);
     }
+    // public function scopeGetResults($Query)
+    // {
+    //     return $Query->where('poll_id',$poll_id);
+    // }
 }
