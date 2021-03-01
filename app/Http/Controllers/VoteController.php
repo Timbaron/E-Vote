@@ -132,17 +132,13 @@ class VoteController extends Controller
     }
     public function result($id)
     {
-        // return $id;
+        $poll_detail = DB::table('polls')->where('id',[$id])->first();
         $voted_candidates = [];
-        $results = DB::select('select * from results where id = ?', [$id]);
-        $poll_detail = DB::table('polls')->where('poll_id',[$results[0]->poll_id])->first();
-        // $poll_detail = DB::select('select * from polls where poll_id = ?', [$results[0]->poll_id])->first();
+        $results = DB::select('select * from results where poll_id = ?', [$poll_detail->poll_id]);
         foreach($results as $result)
         {
             $voted_candidates[] = $result->candidate;
         }
-        // $vote_counts = array_count_values($candidates);
-        // return $voted_candidates;
         $all_candidates = json_decode($poll_detail->candidates);
         return view('polls.result',compact('voted_candidates','all_candidates','poll_detail'));
     }

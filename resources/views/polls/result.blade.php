@@ -53,7 +53,7 @@
                                             }
                                         ?>
 
-                                        <li data-cp-size="{{$votes/$total_votes*100}}">{{$votes/$total_votes*100}}% {{$candidate}}</li>
+                                        <li style="color: black" data-cp-size="{{$votes/$total_votes*100}}">{{$votes/$total_votes*100}}% {{$candidate}}</li>
                                         @endforeach
 
                                     </ul>
