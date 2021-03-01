@@ -34,7 +34,7 @@ class VoteController extends Controller
         $poll = Poll::findOrFail($request->poll_code);
         $today = Carbon::now();
         $poll['status'] = '';
-        $results = DB::select('select * from results where poll_id = ? and user_id = ?', [$poll->id,Auth::user()->id]);
+        $results = DB::select('select * from results where poll_id = ? and user_id = ?', [$poll->poll_id,Auth::user()->id]);
         if($poll == [])
         {
             notify()->error('Poll not found');
@@ -133,20 +133,17 @@ class VoteController extends Controller
     public function result($id)
     {
         // return $id;
-        $candidates = [];
-        $poll_detail = DB::table('polls')->where('id',$id)->first();
+        $voted_candidates = [];
         $results = DB::select('select * from results where id = ?', [$id]);
-        // $poll = DB::select('select * from polls where id = ?', [$id])->first();
-        dd($results);
+        $poll_detail = DB::table('polls')->where('poll_id',[$results[0]->poll_id])->first();
+        // $poll_detail = DB::select('select * from polls where poll_id = ?', [$results[0]->poll_id])->first();
         foreach($results as $result)
         {
-            $candidates[] = $result->candidate;
+            $voted_candidates[] = $result->candidate;
         }
         // $vote_counts = array_count_values($candidates);
-        // return $candidates;
-        // return $vote_count;
-
-
-        // return view('polls.result',compact('candidates'));
+        // return $voted_candidates;
+        $all_candidates = json_decode($poll_detail->candidates);
+        return view('polls.result',compact('voted_candidates','all_candidates','poll_detail'));
     }
 }

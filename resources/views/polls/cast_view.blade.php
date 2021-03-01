@@ -38,7 +38,7 @@
                     <div class="widget-content widget-content-area">
                         <div class="input-group mb-4">
                             {{-- <button class="btn btn-outline-primary" type="button">Button</button> --}}
-                            <input type="text" class="form-control-rounded-left form-control" placeholder="E.g BV23904" name="poll_code" aria-label="Recipient's username" aria-describedby="basic-addon2">
+                            <input type="text" class="form-control-rounded-left form-control" placeholder="E.g BV23904" name="poll_code" aria-label="Recipient's username" aria-describedby="basic-addon2" autofocus>
                             <div class="input-group-append">
                                 <button class="btn btn-outline-primary form-control-rounded-right" type="submit">Search</button>
                             </div>

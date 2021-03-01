@@ -42,12 +42,18 @@
                             <div class="col-lg-12 mb-4">
                                 <div class="bar-chart custom-bar-chart">
                                     <ul class="plot-container">
-                                        @foreach ($candidates as $candidate)
+                                        @foreach ($all_candidates as $candidate)
                                         <?php
                                             $votes = 0;
+                                            $total_votes = count($voted_candidates);
+                                            foreach ($voted_candidates as $voted_candidate) {
+                                                if ($candidate == $voted_candidate) {
+                                                    $votes += 1;
+                                                }
+                                            }
                                         ?>
 
-                                        <li data-cp-size="30">100%</li>
+                                        <li data-cp-size="{{$votes/$total_votes*100}}">{{$votes/$total_votes*100}}% {{$candidate}}</li>
                                         @endforeach
 
                                     </ul>
