@@ -31,7 +31,7 @@
             <li class="menu">
                 <a href="#polls" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="flaticon-mail-19"></i>
+                        <i class="flaticon-stack"></i>
                         <span>Polls</span>
                     </div>
                     <div>
@@ -77,7 +77,7 @@
                 </ul>
                 <a href="#account" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
                     <div class="">
-                        <i class="flaticon-mail-19"></i>
+                        <i class="flaticon-user-9"></i>
                         <span>My Account</span>
                     </div>
                     <div>
