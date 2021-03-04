@@ -143,7 +143,7 @@
                                     private.onclick = function() {
                                     console.log(this);
                                     if(!this.checked) {
-                                        $('#allowed_email').hide();
+                                        allowed_email.style['display'] = 'none';
                                     } else {
                                         allowed_email.style['display'] = 'block';
                                     }

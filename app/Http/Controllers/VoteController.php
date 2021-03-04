@@ -140,6 +140,6 @@ class VoteController extends Controller
             $voted_candidates[] = $result->candidate;
         }
         $all_candidates = json_decode($poll_detail->candidates);
-        return view('polls.result',compact('voted_candidates','all_candidates','poll_detail'));
+        return view('polls.result',compact('voted_candidates','all_candidates','poll_detail','results'));
     }
 }

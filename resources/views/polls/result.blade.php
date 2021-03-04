@@ -45,7 +45,7 @@
                                         @foreach ($all_candidates as $candidate)
                                         <?php
                                             $votes = 0;
-                                            $total_votes = count($voted_candidates);
+                                            $total_votes = count($results);
                                             foreach ($voted_candidates as $voted_candidate) {
                                                 if ($candidate == $voted_candidate) {
                                                     $votes += 1;
@@ -53,7 +53,7 @@
                                             }
                                         ?>
 
-                                        <li style="color: black" data-cp-size="{{$votes/$total_votes*100}}">{{$votes/$total_votes*100}}% {{$candidate}}</li>
+                                        <li style="color: black" data-cp-size="{{round($votes/$total_votes*100)}}">{{round($votes/$total_votes*100)}}% {{$candidate}}</li>
                                         @endforeach
 
                                     </ul>
