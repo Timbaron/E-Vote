@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\CastRequest;
 use App\Models\Poll;
 use App\Models\Result;
+use App\Models\User;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -132,11 +133,16 @@ class VoteController extends Controller
     }
     public function result($id)
     {
-        $poll_detail = DB::table('polls')->where('id',[$id])->first();
+        $poll_detail = Poll::where('id',[$id])->first();
         if($poll_detail == false){
             notify()->error('Unknown error was encountered!!! Try again later');
             return redirect('/polls');
         }
+        if($poll_detail->user_id != auth()->user()->id)
+        {
+            return redirect()->back();
+        }
+
         $voted_candidates = [];
         $results = DB::select('select * from results where poll_id = ?', [$poll_detail->poll_id]);
         foreach($results as $result)
