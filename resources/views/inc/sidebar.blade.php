@@ -21,7 +21,7 @@
 
         <ul class="list-unstyled menu-categories" id="accordionExample">
             <li class="menu">
-                <a href="/" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">
+                <a href="/dashboard" aria-expanded="true" class="dropdown-toggle">
                     <div class="">
                         <i class="flaticon-computer-6 ml-3"></i>
                         <span>Dashboard</span>

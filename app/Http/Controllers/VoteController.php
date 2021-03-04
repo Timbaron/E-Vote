@@ -133,6 +133,10 @@ class VoteController extends Controller
     public function result($id)
     {
         $poll_detail = DB::table('polls')->where('id',[$id])->first();
+        if($poll_detail == false){
+            notify()->error('Unknown error was encountered!!! Try again later');
+            return redirect('/polls');
+        }
         $voted_candidates = [];
         $results = DB::select('select * from results where poll_id = ?', [$poll_detail->poll_id]);
         foreach($results as $result)

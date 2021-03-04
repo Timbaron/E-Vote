@@ -52,8 +52,12 @@
                                                 }
                                             }
                                         ?>
+                                        @if ($total_votes > 0)
+                                            <li style="color: black" data-cp-size="{{round($votes/$total_votes*100)}}">{{round($votes/$total_votes*100)}}% {{$candidate . $votes}} Vote(s)</li>
+                                        @else
+                                            <li style="color: black" data-cp-size="0">{{$candidate}} 0 Vote(s)</li>
+                                        @endif
 
-                                        <li style="color: black" data-cp-size="{{round($votes/$total_votes*100)}}">{{round($votes/$total_votes*100)}}% {{$candidate}}</li>
                                         @endforeach
 
                                     </ul>

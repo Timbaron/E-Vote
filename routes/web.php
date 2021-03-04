@@ -38,3 +38,7 @@ Auth::routes();
 Route::get('/cast', [VoteController::class,'cast']);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::fallback(function(){
+    dd('Page not found');
+});
