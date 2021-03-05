@@ -61,11 +61,17 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="0" id="visibility" selected required>
+                                                        <input type="radio" name="visibility" value="0" id="visibility" checked
+                                                        onclick="
+                                                            document.getElementById('allowed_email').style['display']= 'none';
+                                                        " required>
                                                         <label>Public</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="1" id="private" required>
+                                                        <input type="radio" name="visibility" value="1" id="private"
+                                                        onclick="
+                                                            document.getElementById('allowed_email').style['display']= 'block';
+                                                        " required>
                                                         <label>Private</label>
                                                     </div>
                                                 </div>
@@ -136,19 +142,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <script>
-                                    var private = document.getElementById('private');
-                                    var public = document.getElementById('public');
-                                    var allowed_email = document.getElementById('allowed_email');
-                                    private.onclick = function() {
-                                    console.log(this);
-                                    if(!this.checked) {
-                                        allowed_email.style['display'] = 'none';
-                                    } else {
-                                        allowed_email.style['display'] = 'block';
-                                    }
-                                    };
-                                </script>
                                 <div class="row">
                                     <div class="col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
                                         <div class="statbox widget box box-shadow">
