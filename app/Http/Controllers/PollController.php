@@ -90,6 +90,18 @@ class PollController extends Controller
     public function edit($id)
     {
         $poll = Poll::findOrFail($id);
+        $today = Carbon::now();
+        $reason = "You can't Edit this Poll because this";
+        if ($today->toDateTimeString() >= $poll->start_date .' ' .$poll->start_time && $today->toDateTimeString() <= $poll->end_date .' ' .$poll->end_time)
+        {
+            notify()->error($reason." Poll is currently Running");
+            return redirect()->back();
+        }
+        elseif($today->toDateTimeString() >= $poll['end_date'] .' ' .$poll['end_time'])
+        {
+            notify()->error($reason.' Poll Has Ended');
+            return redirect()->back();
+        }
         $poll->candidates = json_decode($poll->candidates);
         $all_candidates = '';
         $all_voters = '';
