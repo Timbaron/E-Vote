@@ -84,9 +84,18 @@
                                         <td class="text-center">
                                             <ul class="table-controls">
                                                 <li><a href="{{route('poll.edit',$poll->poll_id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="flaticon-edit  p-1 br-6 mb-1"></i></a></li>
-                                                <li><a href="{{route('poll.destroy',$poll->poll_id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><i class="flaticon-delete  p-1 br-6 mb-1"></i></a></li>
+                                                <li><a class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
+                                                        onclick="event.preventDefault();
+                                                        if(confirm('Are you sure you want to delete poll of ID {{$poll->poll_id}}')){
+                                                            document.getElementById('delete-poll').submit();
+                                                        }
+                                                        "
+                                                    ><i class="flaticon-delete  p-1 br-6 mb-1"></i></a></li>
                                                 <li><a href="{{route('poll.result',$poll->id)}};" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Result"><i class="flaticon-three-line-menu  p-1 br-6 mb-1"></i></a></li>
                                             </ul>
+                                            <form action="{{route('poll.destroy',$poll->poll_id)}}" id="delete-poll">
+                                                @csrf
+                                            </form>
                                         </td>
 
 
