@@ -61,7 +61,7 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="0" id="visibility" checked
+                                                        <input type="radio" name="visibility" value="0" id="visibility"
                                                         onclick="
                                                             document.getElementById('allowed_email').style['display']= 'none';
                                                         " required>
@@ -93,11 +93,11 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="0" value="{{old('notify_me')}}" selected required>
+                                                        <input type="radio" name="notify_me" value="0" required>
                                                         <label>No</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="1" value="{{old('notify_me')}}" required>
+                                                        <input type="radio" name="notify_me" value="1" required>
                                                         <label>Yes</label>
                                                     </div>
                                                 </div>

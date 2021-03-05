@@ -89,9 +89,26 @@ class PollController extends Controller
      */
     public function edit($id)
     {
-        $poll = Poll::find($id);
-        return view('polls.edit_polls',compact('poll'));
-        dd($id);
+        $poll = Poll::findOrFail($id);
+        $poll->candidates = json_decode($poll->candidates);
+        $all_candidates = '';
+        $all_voters = '';
+        // return gettype($poll->candidates);
+        foreach($poll->candidates as $poll->candidate)
+        {
+            $all_candidates .= $poll->candidate . ',';
+        }
+        // return $all_candidates;
+        if($poll->allowed_voters)
+        {
+            $poll->allowed_voters = json_decode($poll->allowed_voters);
+            foreach($poll->allowed_voters as $poll->allowed_voter)
+            {
+                $all_voters .= $poll->allowed_voter;
+            }
+        }
+        return view('polls.edit_polls',compact('poll','all_candidates','all_voters'));
+        // dd($poll);
     }
 
     /**
@@ -101,9 +118,34 @@ class PollController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PollRequest $request, $id)
     {
-        //
+        $request->candidates = strtolower($request->candidates);
+        $request->candidates = explode(',',$request->candidates);
+        if(empty($request->candidates[count($request->candidates)-1])){
+            unset($request->candidates[count($request->candidates)-1]);
+        }
+        $request['candidates'] = json_encode($request->candidates);
+        if($request->allowed_voters)
+        {
+            $request->allowed_voters = strtolower($request->allowed_voters);
+            $request->allowed_voters = explode(',',$request->allowed_voters);
+            if(empty($request->allowed_voters[count($request->allowed_voters)-1])){
+                unset($request->allowed_voters[count($request->allowed_voters)-1]);
+            }
+            $request['allowed_voters'] = json_encode($request->allowed_voters);
+        }
+        $poll = Poll::find($id);
+        if($poll->update($request->all()))
+        {
+            notify()->info('Poll of ID'.' '. $id .' '.'Succesfully Updated');
+            return redirect('polls');
+        }
+        else
+        {
+            return redirect('polls');
+            notify()->error('Failed to update Poll, try again later');
+        }
     }
 
     /**

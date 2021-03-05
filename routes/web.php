@@ -25,8 +25,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('poll/store',[PollController::class, 'store'])->name('poll.store');
     Route::get('poll/edit/{poll_id}', [PollController::class, 'edit'])->name('poll.edit');
     Route::get('poll/delete/{poll_id}', [PollController::class, 'destroy'])->name('poll.destroy');
+    Route::get('poll/update/{id}', [PollController::class, 'update'])->name('poll.update');
     Route::get('coming-soon',[HomeController::class,'coming_soon'])->name('coming-soon');
-
+    // Route::resource('poll', [PollController::class]);
     // CAST VOTE
     Route::get('/poll/cast/new', [VoteController::class,'index'])->name('poll.cast.new');
     Route::get('/poll/cast/',[VoteController::class, 'create'])->name('poll.cast');

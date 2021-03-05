@@ -39,7 +39,7 @@ class PollRequest extends FormRequest
     public function messages()
     {
         return [
-            'allowed_voters|required_if' => 'Visibility is set to private, so emails are required!!!',
+            'allowed_voters|required_if' => 'Visibility is set to private, so email(s) are required!!!',
         ];
     }
 }

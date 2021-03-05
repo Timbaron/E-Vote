@@ -27,8 +27,9 @@
                             </div>
                         </div>
                         <div class="widget-content widget-content-area">
-                            <form action="/" method="POST">
+                            <form action="{{route('poll.update',$poll->poll_id)}}" method="get">
                                 @csrf
+                                @method('PATCH')
                                 <div class="form-row mb-4">
                                     <div class="form-group col-md-6">
                                         <label for="inputEmail4">Position</label>
@@ -42,7 +43,7 @@
                                         @error('Candidates')
                                             <span style="color: red">Invalid Candidate</span>
                                         @enderror
-                                        <input type="text" name="candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{$poll->candidates}}" multiple required>
+                                        <input type="text" name="candidates" class="form-control" id="inputPassword4" placeholder="E.g samuel kofi,timothy akiode" value="{{$all_candidates}}" multiple required>
                                     </div>
                                 </div>
                                 <div class="row">
@@ -61,11 +62,24 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" {{@if($poll->visibility) }} selected {{ @endif}} required>
+                                                        <input type="radio" name="visibility" value="0"
+                                                            @if ($poll->visibility == false)
+                                                                checked
+                                                            @endif
+                                                        required onclick="
+                                                            document.getElementById('allowed_email').style['display']= 'none';
+                                                        " >
                                                         <label>Public</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="visibility" value="{{$poll->visibility}}" required>
+                                                        <input type="radio" name="visibility" value="1"
+                                                            @if ($poll->visibility == true)
+                                                                checked
+                                                            @endif
+                                                        required
+                                                        onclick="
+                                                            document.getElementById('allowed_email').style['display']= 'block';
+                                                        " >
                                                         <label>Private</label>
                                                     </div>
                                                 </div>
@@ -87,11 +101,19 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="0" value="{{old('notify_me')}}" selected required>
+                                                        <input type="radio" name="notify_me" value="0"
+                                                        @if ($poll->notify_me == false)
+                                                            checked
+                                                        @endif
+                                                        required>
                                                         <label>No</label>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="1" value="{{old('notify_me')}}" required>
+                                                        <input type="radio" name="notify_me" value="1"
+                                                        @if ($poll->notify_me == true)
+                                                            checked
+                                                        @endif
+                                                        required>
                                                         <label>Yes</label>
                                                     </div>
                                                 </div>
@@ -99,11 +121,11 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="row">
+                                <div class="row" id="allowed_email" style="display: none">
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-12 layout-spacing">
                                         <div class="statbox widget box box-shadow">
                                             <div class="widget-header">
-                                                <div class="row">
+                                                <div class="row" >
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>If visibility is Private, Enter emails of allowed voters <span style="color: red">(Select checkbox if invite link should be sent.)</span></h4>
                                                         @error('allowed_voters')
@@ -118,11 +140,15 @@
 
                                                         <div class="widget-content widget-content-area">
                                                             <div class="input-group mb-4">
-                                                                <textarea name="allowed_voters" id="" cols="90" rows="5" placeholder="E.g abc@def.com , xyz@kpk.com">{{old('allowed_voters')}}</textarea>
+                                                                <textarea name="allowed_voters" id="" cols="90" rows="5" placeholder="E.g abc@def.com , xyz@kpk.com">{{$all_voters}}</textarea>
                                                                 <div class="input-group-append">
                                                                     <div class="input-group-text">
                                                                         <label class="switch s-secondary mt-2">
-                                                                            <input type="checkbox" name="send_invite" value="1">
+                                                                            <input type="checkbox" name="send_invite"
+                                                                                @if ($poll->send_invite)
+                                                                                    checked
+                                                                                @endif
+                                                                            value="1">
                                                                             <span class="slider"></span><br>
                                                                         </label>
                                                                     </div>
@@ -155,10 +181,10 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row justify-content-between">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="date" name="start_date" value="{{old('start_date')}}" required>
+                                                        <input type="date" name="start_date" value="{{$poll->start_date}}" required>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="date" name="end_date" value="{{old('end_date')}}" required>
+                                                        <input type="date" name="end_date" value="{{$poll->end_date}}" required>
                                                     </div>
                                                 </div>
                                             </div>
@@ -182,17 +208,17 @@
                                             <div class="widget-content widget-content-area text-center">
                                                 <div class="row justify-content-between">
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="time" name="start_time" value="{{old('start_time')}}" required>
+                                                        <input type="time" name="start_time" value="{{$poll->start_time}}" required>
                                                     </div>
                                                     <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="time" name="end_time" value="{{old('end_time')}}" required>
+                                                        <input type="time" name="end_time" value="{{$poll->end_time}}" required>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                                <button type="submit" class="btn btn-button-7 mb-4 mt-3">Create</button>
+                                <button type="submit" class="btn btn-button-7 mb-4 mt-3">Update</button>
                             </form>
                         </div>
                     </div>
