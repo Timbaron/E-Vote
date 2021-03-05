@@ -23,9 +23,9 @@
                     <div class="collapse navbar-collapse justify-content-end" id="nav-content">
                         <ul class="navbar-nav text-center mt-lg-0 mt-5">
                             <li class="nav-item active">
-                                <a class="nav-link js-scroll-trigger" href="#navHeadWrapper">Home</a>
+                                <a class="nav-link js-scroll-trigger" href="/">Home</a>
                               </li>
-                              <li class="nav-item">
+                              {{-- <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href="#whyusWrapper">About us</a>
                               </li>
                               <li class="nav-item">
@@ -36,7 +36,7 @@
                               </li>
                               <li class="nav-item">
                                 <a class="nav-link js-scroll-trigger" href="#footerWrapper">Contact Us</a>
-                              </li>
+                              </li> --}}
                         </ul>
                             @auth
                                 <form class="form-inline justify-content-lg-start justify-content-center mt-lg-0 mt-5" action="/dashboard">
