@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['auth'])->group(function () {
+Route::middleware(['auth','verified'])->group(function () {
     Route::get('/dashboard', function(){
         return view('dashboard');
     });
@@ -31,12 +31,12 @@ Route::middleware(['auth'])->group(function () {
     // CAST VOTE
     Route::get('/poll/cast/new', [VoteController::class,'index'])->name('poll.cast.new');
     Route::get('/poll/cast/',[VoteController::class, 'create'])->name('poll.cast');
+    Route::get('/cast', [VoteController::class,'cast']);
 
     // View Result
     Route::get('/poll/result/{id}', [VoteController::class, 'result'])->name('poll.result');
 });
-Auth::routes();
-Route::get('/cast', [VoteController::class,'cast']);
+Auth::routes(['verify' => true]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
