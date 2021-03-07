@@ -36,43 +36,25 @@
             <p class="m1-txt1 p-b-36">
                 This feature is <span class="m1-txt2">Coming Soon</span>, follow us for update now!
             </p>
+            <div class="flex-w">
+                {{-- <a href="#" class="flex-c-m size5 bg3 how1 trans-04 m-r-5">
+                    <i class="fa fa-facebook"></i>
+                </a> --}}
 
-            <form class="contact100-form validate-form">
-                <div class="wrap-input100 m-b-10 validate-input" data-validate = "Name is required">
-                    <input class="s2-txt1 placeholder0 input100" type="text" name="name" placeholder="Your Name">
-                    <span class="focus-input100"></span>
-                </div>
+                <a href="https://twitter.com/Bvote13" target="_blank" class="flex-c-m size5 bg4 how1 trans-04 m-r-5">
+                    <i class="fa fa-twitter"></i>
+                </a>
 
-                <div class="wrap-input100 m-b-20 validate-input" data-validate = "Email is required: ex@abc.xyz">
-                    <input class="s2-txt1 placeholder0 input100" type="text" name="email" placeholder="Email Address">
-                    <span class="focus-input100"></span>
-                </div>
-
-                <div class="w-full">
-                    <button class="flex-c-m s2-txt2 size4 bg1 bor1 hov1 trans-04">
-                        Subscribe
-                    </button>
-                </div>
-            </form>
-
+                {{-- <a href="#" class="flex-c-m size5 bg5 how1 trans-04 m-r-5">
+                    <i class="fa fa-youtube-play"></i>
+                </a> --}}
+            </div>
             <p class="s2-txt3 p-t-18">
-                And don’t worry, we hate spam too! You can unsubcribe at anytime.
+                And don’t worry, we hate spam too! You can unfollow at anytime.
             </p>
         </div>
 
-        <div class="flex-w">
-            <a href="#" class="flex-c-m size5 bg3 how1 trans-04 m-r-5">
-                <i class="fa fa-facebook"></i>
-            </a>
 
-            <a href="#" class="flex-c-m size5 bg4 how1 trans-04 m-r-5">
-                <i class="fa fa-twitter"></i>
-            </a>
-
-            <a href="#" class="flex-c-m size5 bg5 how1 trans-04 m-r-5">
-                <i class="fa fa-youtube-play"></i>
-            </a>
-        </div>
     </div>
 </div>
 @endsection
