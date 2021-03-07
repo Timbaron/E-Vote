@@ -33,7 +33,7 @@ class VoteController extends Controller
     public function  create(Request $request)
     {
         $poll = Poll::findOrFail($request->poll_code);
-        $today = Carbon::now();
+        $today = Carbon::now()->addHour();
         $poll['status'] = '';
         $results = DB::select('select * from results where poll_id = ? and user_id = ?', [$poll->poll_id,Auth::user()->id]);
         if($poll == [])

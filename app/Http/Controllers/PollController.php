@@ -19,7 +19,7 @@ class PollController extends Controller
     {
         // $today_date = Carbon::now()->toDateString();
         // $today_time = Carbon::now()->toTimeString();
-        $today = Carbon::now();
+        $today = Carbon::now()->addHour();
         $polls = auth()->user()->polls->sortByDesc('created_at');
         // if($today->toDateTimeString() <= $polls->start_date .' ' .$polls->start_time){
         //     return "Today is less than yesterday";
@@ -90,7 +90,7 @@ class PollController extends Controller
     public function edit($id)
     {
         $poll = Poll::findOrFail($id);
-        $today = Carbon::now();
+        $today = Carbon::now()->addHour();
         $reason = "You can't Edit this Poll because this";
         if ($today->toDateTimeString() >= $poll->start_date .' ' .$poll->start_time && $today->toDateTimeString() <= $poll->end_date .' ' .$poll->end_time)
         {
