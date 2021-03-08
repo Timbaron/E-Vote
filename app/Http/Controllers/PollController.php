@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Events\PrivatePollCreatedEvent;
 use App\Http\Requests\PollRequest;
 use App\Models\Poll;
+use App\Models\Result;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -177,6 +178,7 @@ class PollController extends Controller
         if($poll == true)
         {
             Poll::destroy($id);
+            Result::where('poll_id',$id)->delete();
             notify()->info('Poll successfully deleted');
             return redirect()->back();
         }
