@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\PrivatePollCreatedEvent;
 use App\Http\Requests\PollRequest;
 use App\Models\Poll;
 use Carbon\Carbon;
@@ -64,7 +65,11 @@ class PollController extends Controller
             $request['allowed_voters'] = $allowed_voters;
         }
         // return $request;
-        auth()->user()->polls()->create($request->all());
+        $poll = auth()->user()->polls()->create($request->all());
+        if($request['send_invite'])
+        {
+            event(new PrivatePollCreatedEvent($poll));
+        }
         notify()->success('Poll Created');
         return redirect('polls');
 
@@ -94,12 +99,12 @@ class PollController extends Controller
         $reason = "You can't Edit this Poll because this";
         if ($today->toDateTimeString() >= $poll->start_date .' ' .$poll->start_time && $today->toDateTimeString() <= $poll->end_date .' ' .$poll->end_time)
         {
-            notify()->error($reason." Poll is currently Running");
+            notify()->error("You can't Edit this Poll this while it's Running");
             return redirect()->back();
         }
         elseif($today->toDateTimeString() >= $poll['end_date'] .' ' .$poll['end_time'])
         {
-            notify()->error($reason.' Poll Has Ended');
+            notify()->error("You can't Edit this Poll because it has Ended");
             return redirect()->back();
         }
         $poll->candidates = json_decode($poll->candidates);

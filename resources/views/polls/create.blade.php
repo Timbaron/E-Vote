@@ -111,7 +111,7 @@
                                             <div class="widget-header">
                                                 <div class="row" >
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                        <h4>If visibility is Private, Enter emails of allowed voters <span style="color: red">(Select checkbox if invite link should be sent.)</span></h4>
+                                                        <h4>If visibility is Private, Enter emails of allowed voters <span style="color: white">(Select checkbox if an invite link should be sent.)</span></h4>
                                                         @error('allowed_voters')
                                                             <span style="color: red">This field is required <b>IF AND ONLY IF</b>Visibility is private</span>
                                                         @enderror
