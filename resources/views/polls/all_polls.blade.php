@@ -86,7 +86,7 @@
                                                 <li><a href="{{route('poll.edit',$poll->poll_id)}}" class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Edit"><i class="flaticon-edit  p-1 br-6 mb-1"></i></a></li>
                                                 <li><a class="bs-tooltip" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"
                                                         onclick="event.preventDefault();
-                                                        if(confirm('Are you sure you want to delete poll of ID {{$poll->poll_id}}')){
+                                                        if(confirm('Are you sure you want to delete poll of ID {{$poll->poll_id}}, NB: All results of this poll will also be deleted!!!')){
                                                             document.getElementById('delete-poll').submit();
                                                         }
                                                         "
