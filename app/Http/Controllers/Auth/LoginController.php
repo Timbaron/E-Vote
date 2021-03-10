@@ -46,7 +46,7 @@ class LoginController extends Controller
     public function handleProviderCallback()
     {
         try {
-            $user = Socialite::driver('google')->user();
+            return Socialite::driver('google')->stateless()->user();
         } catch (\Exception $e) {
             dd($e);
             return redirect('/login');
