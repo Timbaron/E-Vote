@@ -26,9 +26,7 @@ class AddNameToUsers extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('other_name');
+            $table->dropColumn(['first_name','last_name','other_name']);
         });
     }
 }
