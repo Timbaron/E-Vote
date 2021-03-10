@@ -133,23 +133,25 @@ class VoteController extends Controller
     }
     public function result($id)
     {
-        $poll_detail = Poll::whereNotIn('id',[$id]);
+        $poll_detail = Poll::where('id',[$id])->get();
         if($poll_detail == false){
             notify()->error('Unknown error was encountered!!! Try again later');
             return redirect('/polls');
         }
-        if($poll_detail->user_id != auth()->user()->id)
+        $poll_detail = $poll_detail[0];
+        // dd($poll_detail['user_id']);
+        if($poll_detail['user_id'] != auth()->user()->id)
         {
             return redirect()->back();
         }
 
         $voted_candidates = [];
-        $results = Result::where('poll_id',$poll_detail->poll_id);
+        $results = Result::where('poll_id',$poll_detail['poll_id'])->get();
         foreach($results as $result)
         {
             $voted_candidates[] = $result->candidate;
         }
-        $all_candidates = json_decode($poll_detail->candidates);
+        $all_candidates = json_decode($poll_detail['candidates']);
         return view('polls.result',compact('voted_candidates','all_candidates','poll_detail','results'));
     }
 }
