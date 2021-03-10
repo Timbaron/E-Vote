@@ -63,12 +63,16 @@ class LoginController extends Controller
             auth()->login($existingUser, true);
         } else {
             // create a new user
+            $user_exploded_name = explode(' ',$user->name);
             $newUser                  = new User;
-            $newUser->name            = $user->name;
+            $newUser->last_name            = $user_exploded_name[0];
+            $newUser->first_name            = $user_exploded_name[1];
             $newUser->email           = $user->email;
             $newUser->avatar          = $user->avatar;
             $newUser->avatar_original = $user->avatar_original;
-            $newUser->save();            auth()->login($newUser, true);
+            dd($newUser);
+            // $newUser->save();
+            // auth()->login($newUser, true);
         }
         return redirect()->to('/');
     }
