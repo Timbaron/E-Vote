@@ -63,6 +63,7 @@ class LoginController extends Controller
             auth()->login($existingUser, true);
         } else {
             // create a new user
+            return $user->name;
             $newUser                  = new User;
             $newUser->name            = $user->name;
             $newUser->email           = $user->email;
