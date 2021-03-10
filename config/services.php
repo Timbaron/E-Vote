@@ -30,9 +30,9 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
     'google' => [
-        'client_id'     => '187186246930-3ib0lce0c9cba0c7rh383epnru1vom31.apps.googleusercontent.com',
-        'client_secret' => 'sRV2CUqFImKrsjEEph1A2yZ_',
-        'redirect'      => 'https://pure-inlet-81952.herokuapp.com/login/callback'
+        'client_id'     => env('GOOGLE_CLIENT_ID'),
+        'client_secret' => env('GOOGLE_CLIENT_SECRET'),
+        'redirect'      => env('GOOGLE_REDIRECT')
     ],
 
 ];
