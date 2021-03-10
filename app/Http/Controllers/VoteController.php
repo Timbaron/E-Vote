@@ -144,7 +144,7 @@ class VoteController extends Controller
         }
 
         $voted_candidates = [];
-        $results = DB::select('select * from results where poll_id = ?', [$poll_detail->poll_id]);
+        $results = Result::where('poll_id',$poll_detail->poll_id);
         foreach($results as $result)
         {
             $voted_candidates[] = $result->candidate;
