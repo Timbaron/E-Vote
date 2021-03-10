@@ -133,7 +133,7 @@ class VoteController extends Controller
     }
     public function result($id)
     {
-        $poll_detail = Poll::where('id',$id)->get();
+        $poll_detail = Poll::where('id',intval($id))->get();
         if($poll_detail == false){
             notify()->error('Unknown error was encountered!!! Try again later');
             return redirect('/polls');
