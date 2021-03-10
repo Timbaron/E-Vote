@@ -38,8 +38,8 @@ Route::middleware(['auth'])->group(function () {
     // View Result
     Route::get('/poll/result/{id}', [VoteController::class, 'result'])->name('poll.result');
 });
-Route::get('/redirect', [LoginController::class, 'redirectToProvider']);
-Route::get('/callback', [LoginController::class, 'handleProviderCallback']);
+Route::get('login/redirect', [LoginController::class, 'redirectToProvider']);
+Route::get('login/callback', [LoginController::class, 'handleProviderCallback']);
 Auth::routes();
 // Auth::routes(['verify' => true]);
 
