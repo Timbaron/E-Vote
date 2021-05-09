@@ -9,8 +9,7 @@ use App\Models\Result;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Spatie\Permission\Contracts\Role;
-
+use Spatie\Permission\Models\Role;
 
 class PollController extends Controller
 {
