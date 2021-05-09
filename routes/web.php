@@ -44,6 +44,7 @@ Auth::routes();
 // Auth::routes(['verify' => true]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/tmp', [PollController::class, 'temp']);
 
 Route::fallback(function(){
     dd('Page not found');

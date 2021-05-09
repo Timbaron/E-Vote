@@ -9,6 +9,8 @@ use App\Models\Result;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Spatie\Permission\Contracts\Role;
+
 
 class PollController extends Controller
 {
@@ -182,5 +184,11 @@ class PollController extends Controller
             notify()->info('Poll successfully deleted');
             return redirect()->back();
         }
+    }
+    public function temp()
+    {
+        $role = Role::create(['name' => 'user']);
+        $role = Role::create(['name' => 'admin']);
+
     }
 }
