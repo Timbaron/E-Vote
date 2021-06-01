@@ -60,15 +60,6 @@
                 </a>
                 <ul class="collapse submenu list-unstyled" id="mailing" data-parent="#accordionExample">
                     <li>
-                        <a href="{{route('coming-soon')}}"> Chat </a>
-                    </li>
-                    <li>
-                        <a href="{{route('coming-soon')}}"> Mailbox </a>
-                    </li>
-                    <li>
-                        <a href="{{route('coming-soon')}}"> Newsletter </a>
-                    </li>
-                    <li>
                         <a href="{{route('coming-soon')}}"> Todo </a>
                     </li>
                     <li>

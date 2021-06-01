@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\Models\User;
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -64,10 +65,26 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user =  User::create([
             // 'username' => $data['username'],
             'email' => strtolower($data['email']),
             'password' => Hash::make($data['password']),
         ]);
+        if($data['account_type'] == 'admin')
+        {
+            $user->assignRole('admin');
+        }
+        else{
+            $user->assignRole('voter');
+        }
+    }
+    protected function registered(Request $request, $user)
+    {
+        // Assign role to $user. Then you can add condition.
+        if($user->hasRole('admin')){
+          return "Admin Role";
+        };
+
+        return redirect()->route('default');
     }
 }

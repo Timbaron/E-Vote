@@ -108,13 +108,19 @@
             <input type="password" id="inputPassword" name="password" class="form-control mb-5" placeholder="Password" required>
             <label for="inputPassword" class="">Confirm Password</label>
             <input type="password" id="inputPassword" name="password_confirmation" class="form-control mb-5" placeholder="Password" required>
-
-            {{-- <div class="checkbox d-flex justify-content-center mb-3">
-                <div class="custom-control custom-checkbox mr-3">
-                    <input type="checkbox" class="custom-control-input" id="customCheck1" value="remember" name="remember">
-                    <label class="custom-control-label" for="customCheck1">Remember me</label>
+            <label for="account-type">Register as a?</label>
+            <div class="checkbox d-flex justify-content-center mb-3">
+                <div class="row justify-content-between">
+                    <div class="col">
+                        <input type="radio" class="custom-control-input" id="customCheck1" value="voter" name="account_type">
+                        <label class="custom-control-label" for="customCheck1">Voter</label>
+                    </div>
+                    <div class="col">
+                        <input type="radio" class="custom-control-input" id="customCheck2" value="admin" name="account_type">
+                        <label class="custom-control-label" for="customCheck2">Admin</label>
+                    </div>
                 </div>
-            </div> --}}
+            </div>
             <button type="submit" class="btn btn-gradient-dark btn-rounded btn-block">Sign up</button>
         </div>
 
