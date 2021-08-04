@@ -65,26 +65,28 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user =  User::create([
+        return User::create([
             // 'username' => $data['username'],
             'email' => strtolower($data['email']),
             'password' => Hash::make($data['password']),
         ]);
-        if($data['account_type'] == 'admin')
-        {
-            $user->assignRole('admin');
-        }
-        else{
-            $user->assignRole('voter');
-        }
-    }
-    protected function registered(Request $request, $user)
-    {
-        // Assign role to $user. Then you can add condition.
-        if($user->hasRole('admin')){
-          return "Admin Role";
-        };
 
-        return redirect()->route('default');
+        // auth()->login($user);
+        // if($data['account_type'] == 'admin')
+        // {
+        //     $user->assignRole('admin');
+        // }
+        // else{
+        //     $user->assignRole('voter');
+        // }
     }
+    // protected function registered(Request $request, $user)
+    // {
+    //     // Assign role to $user. Then you can add condition.
+    //     if($user->hasRole('admin')){
+    //       return "Admin Role";
+    //     };
+
+    //     return redirect()->route('default');
+    // }
 }

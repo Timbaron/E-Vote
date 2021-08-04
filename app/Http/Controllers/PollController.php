@@ -20,13 +20,8 @@ class PollController extends Controller
      */
     public function index()
     {
-        // $today_date = Carbon::now()->toDateString();
-        // $today_time = Carbon::now()->toTimeString();
         $today = Carbon::now()->addHour();
         $polls = auth()->user()->polls->sortByDesc('created_at');
-        // if($today->toDateTimeString() <= $polls->start_date .' ' .$polls->start_time){
-        //     return "Today is less than yesterday";
-        // }
         return view('polls.all_polls',compact('polls','today'));
     }
 
@@ -68,6 +63,10 @@ class PollController extends Controller
         }
         // return $request;
         $poll = auth()->user()->polls()->create($request->all());
+        if($request['visibility'] == 'private')
+        {
+            ddd($request['allowed_voters'])
+        }
         if($request['send_invite'])
         {
             event(new PrivatePollCreatedEvent($poll));
