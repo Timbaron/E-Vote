@@ -29,7 +29,6 @@ class VoteController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
     public function  create(Request $request)
     {
         $poll = Poll::findOrFail($request->poll_code);
