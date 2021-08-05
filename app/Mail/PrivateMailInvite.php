@@ -10,15 +10,16 @@ use Illuminate\Queue\SerializesModels;
 class PrivateMailInvite extends Mailable
 {
     use Queueable, SerializesModels;
-
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct()
+    public $poll_id;
+
+    public function __construct($poll_id)
     {
-        //
+        $this->poll_id = $poll_id;
     }
 
     /**

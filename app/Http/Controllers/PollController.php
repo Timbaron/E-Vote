@@ -4,11 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Events\PrivatePollCreatedEvent;
 use App\Http\Requests\PollRequest;
+use App\Mail\PrivateMailInvite;
 use App\Models\Poll;
 use App\Models\Result;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Spatie\Permission\Models\Role;
 
 class PollController extends Controller
@@ -58,14 +60,19 @@ class PollController extends Controller
         // Convert Emails to array then to Json
         if(!empty($request['allowed_voters'])){
             $allowed_voters = explode(',',$request['allowed_voters']);
-            $allowed_voters = json_encode($allowed_voters);
-            $request['allowed_voters'] = $allowed_voters;
+            $allowed_voters_encoded = json_encode($allowed_voters);
+            $request['allowed_voters'] = $allowed_voters_encoded;
         }
         // return $request;
         $poll = auth()->user()->polls()->create($request->all());
-        if($request['visibility'] == 'private')
+        if($request['visibility'] == '1')
         {
-            ddd($request['allowed_voters'])
+
+            foreach($allowed_voters as $voter)
+            {
+                Mail::to($voter)->queue(new PrivateMailInvite($poll_id));
+            }
+            // ddd($request['allowed_voters']);
         }
         if($request['send_invite'])
         {
