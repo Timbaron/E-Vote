@@ -11,8 +11,6 @@
 
             <div class="social text-center">
                 <h5 class="mb-4">Sign in with</h5>
-                <button type="button" class="btn btn-outline-primary rounded-circle mb-3 mr-2"><i class="flaticon-facebook-logo flaticon-circle-p"></i></button>
-                <button type="button" class="btn btn-outline-info rounded-circle mb-3 mr-2"><i class="flaticon-twitter-logo flaticon-circle-p"></i></button>
                 {{-- <button type="button" class="btn btn-outline-danger rounded-circle mb-3 mr-2"><i class="flaticon-google-plus-bold flaticon-circle-p"></i></button> --}}
                 <a href="/login/redirect" type="button" class="btn btn-outline-danger rounded-circle mb-3 mr-2"><i class="flaticon-google-plus-bold flaticon-circle-p"></i></a>
             </div>
