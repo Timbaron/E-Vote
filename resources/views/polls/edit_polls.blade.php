@@ -86,40 +86,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                                        <div class="statbox widget box box-shadow">
-                                            <div class="widget-header">
-                                                <div class="row">
-                                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                        <h4>Do you want to recieve notifications?</h4>
-                                                        @error('notify_me')
-                                                            <span style="color: red">Select either Yes or No</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content widget-content-area text-center">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="0"
-                                                        @if ($poll->notify_me == false)
-                                                            checked
-                                                        @endif
-                                                        required>
-                                                        <label>No</label>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="1"
-                                                        @if ($poll->notify_me == true)
-                                                            checked
-                                                        @endif
-                                                        required>
-                                                        <label>Yes</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row" id="allowed_email" style="display: none">
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-12 layout-spacing">
