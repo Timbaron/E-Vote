@@ -21,8 +21,6 @@ class CreatePollsTable extends Migration
             $table->string('position');
             $table->string('allowed_voters')->nullable();
             $table->boolean('visibility');
-            $table->boolean('notify_me');
-            $table->boolean('send_invite')->nullable();
             $table->date('start_date');
             $table->date('end_date');
             $table->time('start_time');

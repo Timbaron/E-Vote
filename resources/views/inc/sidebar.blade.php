@@ -7,12 +7,6 @@
     <nav id="sidebar">
 
         <ul class="navbar-nav theme-brand flex-row  d-none d-lg-flex">
-            <li class="nav-item d-flex">
-                <a href="/" class="navbar-brand">
-                    <img src="assets/img/logo-32.png" class="img-fluid" alt="logo">
-                </a>
-                <p class="border-underline"></p>
-            </li>
             <li class="nav-item theme-text">
                 <a href="/" class="nav-link"> B-Vote </a>
             </li>
@@ -47,23 +41,6 @@
                     </li>
                     <li>
                         <a href="{{route('poll.cast.new')}}"> Cast </a>
-                    </li>
-                </ul>
-                <a href="#mailing" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
-                    <div class="">
-                        <i class="flaticon-mail-19"></i>
-                        <span>Apps</span>
-                    </div>
-                    <div>
-                        <i class="flaticon-right-arrow"></i>
-                    </div>
-                </a>
-                <ul class="collapse submenu list-unstyled" id="mailing" data-parent="#accordionExample">
-                    <li>
-                        <a href="{{route('coming-soon')}}"> Todo </a>
-                    </li>
-                    <li>
-                        <a href="{{route('coming-soon')}}"> Blog </a>
                     </li>
                 </ul>
                 <a href="#account" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">

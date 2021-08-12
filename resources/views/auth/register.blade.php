@@ -86,7 +86,8 @@
                 <h5 class="mb-4">Sign up with</h5>
                 <button type="button" class="btn btn-outline-primary rounded-circle mb-3 mr-2"><i class="flaticon-facebook-logo flaticon-circle-p"></i></button>
                 <button type="button" class="btn btn-outline-info rounded-circle mb-3 mr-2"><i class="flaticon-twitter-logo flaticon-circle-p"></i></button>
-                <button type="button" class="btn btn-outline-danger rounded-circle mb-3 mr-2"><i class="flaticon-google-plus-bold flaticon-circle-p"></i></button>
+                <!-- <button type="button" class="btn btn-outline-danger rounded-circle mb-3 mr-2"><i class="flaticon-google-plus-bold flaticon-circle-p"></i></button> -->
+                <a href="/login/redirect" type="button" class="btn btn-outline-danger rounded-circle mb-3 mr-2"><i class="flaticon-google-plus-bold flaticon-circle-p"></i></a>
             </div>
 
             <div class="division mt-4 mb-5">
@@ -108,7 +109,7 @@
             <input type="password" id="inputPassword" name="password" class="form-control mb-5" placeholder="Password" required>
             <label for="inputPassword" class="">Confirm Password</label>
             <input type="password" id="inputPassword" name="password_confirmation" class="form-control mb-5" placeholder="Password" required>
-            <label for="account-type">Register as a?</label>
+            <!-- <label for="account-type">Register as a?</label>
             <div class="checkbox d-flex justify-content-center mb-3">
                 <div class="row justify-content-between">
                     <div class="col">
@@ -120,7 +121,7 @@
                         <label class="custom-control-label" for="customCheck2">Admin</label>
                     </div>
                 </div>
-            </div>
+            </div> -->
             <button type="submit" class="btn btn-gradient-dark btn-rounded btn-block">Sign up</button>
         </div>
 

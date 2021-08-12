@@ -27,7 +27,6 @@ class PollRequest extends FormRequest
             'position' => 'required',
             'candidates' => 'required',
             'visibility' => 'required',
-            'notify_me' => 'required',
             'allowed_voters' => 'required_if:visibility,1',
             'start_date' => 'date|after_or_equal:today',
             'end_date' => 'date|after_or_equal:start_date',
@@ -39,7 +38,17 @@ class PollRequest extends FormRequest
     public function messages()
     {
         return [
-            'allowed_voters|required_if' => 'Visibility is set to private, so email(s) are required!!!',
+            'position.required' => 'Position is required',
+            'candidates.required' => 'Candidates are required',
+            'visibility.required' => 'Visibility is required',
+            'allowed_voters.required_if' => 'Allowed voters email address are required if visibility is private',
+            'start_date.date' => 'Start date must be a valid date',
+            'start_date.after_or_equal' => 'Start date must be after or equal to today',
+            'end_date.date' => 'End date must be a valid date',
+            'end_date.after_or_equal' => 'End date must be after or equal to start date',
+            'start_time.required' => 'Start time is required',
+            'end_time.required' => 'End time is required',
+            
         ];
     }
 }

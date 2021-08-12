@@ -78,32 +78,6 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-6 col-md-6 col-sm-12 col-12 layout-spacing">
-                                        <div class="statbox widget box box-shadow">
-                                            <div class="widget-header">
-                                                <div class="row">
-                                                    <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                                        <h4>Do you want to recieve notifications?</h4>
-                                                        @error('notify_me')
-                                                            <span style="color: red">Select either Yes or No</span>
-                                                        @enderror
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="widget-content widget-content-area text-center">
-                                                <div class="row">
-                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="0" required>
-                                                        <label>No</label>
-                                                    </div>
-                                                    <div class="col-lg-3 col-md-3 col-sm-4 col-6">
-                                                        <input type="radio" name="notify_me" value="1" required>
-                                                        <label>Yes</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                                 <div class="row" id="allowed_email" style="display: none">
                                     <div class="col-lg-12 col-md-6 col-sm-12 col-12 layout-spacing">
@@ -113,7 +87,7 @@
                                                     <div class="col-xl-12 col-md-12 col-sm-12 col-12">
                                                         <h4>If visibility is Private, Enter emails of allowed voters <span style="color: white">(Select checkbox if an invite link should be sent.)</span></h4>
                                                         @error('allowed_voters')
-                                                            <span style="color: red">This field is required <b>IF AND ONLY IF</b>Visibility is private</span>
+                                                            <span style="color: red">This field is required <b> IF AND ONLY IF </b> Visibility is private </span>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -125,14 +99,6 @@
                                                         <div class="widget-content widget-content-area">
                                                             <div class="input-group mb-4">
                                                                 <textarea name="allowed_voters" id="" cols="90" rows="5" placeholder="E.g abc@def.com , xyz@kpk.com">{{old('allowed_voters')}}</textarea>
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text">
-                                                                        <label class="switch s-secondary mt-2">
-                                                                            <input type="checkbox" name="send_invite" value="1">
-                                                                            <span class="slider"></span><br>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

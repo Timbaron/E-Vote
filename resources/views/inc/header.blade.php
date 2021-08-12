@@ -39,7 +39,8 @@
                     <i class="mr-1 flaticon-email-fill-1"></i> <span>My Todos</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="user_login_1.html">
+                <!-- <span><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">></a></span> -->
+                <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     <i class="mr-1 flaticon-power-button"></i> <span>Log Out</span>
                 </a>
             </div>
