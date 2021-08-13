@@ -153,7 +153,7 @@ class VoteController extends Controller
         {
             $voted_candidates[] = $result->candidate;
         }
-        dd($all_candidates);
+        // dd($all_candidates);
         return view('polls.result',compact('voted_candidates','all_candidates','poll_detail','results'));
     }
 }
