@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -60,16 +60,16 @@ class LoginController extends Controller
         $existingUser = User::where('email', $user->email)->first();
         if($existingUser){
             // log them in
-            auth()->login($existingUser, true);
+            auth()->login($existingUser);
         } else {
             // create a new user
             $user_exploded_name = explode(' ',$user->name);
-            $newUser                  = new User;
-            $newUser->last_name            = $user_exploded_name[0];
-            $newUser->first_name            = $user_exploded_name[1];
-            $newUser->email           = $user->email;
+            $newUser = new User;
+            $newUser->last_name = $user_exploded_name[0];
+            $newUser->first_name = $user_exploded_name[1];
+            $newUser->email = $user->email;
             $newUser->save();
-            auth()->login($newUser, true);
+            auth()->login($newUser);
         }
         return redirect()->to('/');
     }

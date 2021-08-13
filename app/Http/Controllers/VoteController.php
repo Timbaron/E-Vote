@@ -133,6 +133,7 @@ class VoteController extends Controller
     public function result($id)
     {
         $poll_detail = Poll::where('id',intval($id))->get();
+        // dd($poll_detail);
         if($poll_detail == false){
             notify()->error('Unknown error was encountered!!! Try again later');
             return redirect('/polls');
@@ -141,16 +142,18 @@ class VoteController extends Controller
         // dd($poll_detail['user_id']);
         if($poll_detail['user_id'] != auth()->user()->id)
         {
+            notify()->error('Unknown error was encountered!!! Try again later');
             return redirect()->back();
         }
 
         $voted_candidates = [];
+        $all_candidates = json_decode($poll_detail['candidates']);
         $results = Result::where('poll_id',$poll_detail['poll_id'])->get();
         foreach($results as $result)
         {
             $voted_candidates[] = $result->candidate;
         }
-        $all_candidates = json_decode($poll_detail['candidates']);
+        dd($all_candidates);
         return view('polls.result',compact('voted_candidates','all_candidates','poll_detail','results'));
     }
 }

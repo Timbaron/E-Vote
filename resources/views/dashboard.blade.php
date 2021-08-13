@@ -2,6 +2,7 @@
 @section('content')
 @include('inc.header')
 @include('inc.sidebar')
+<!-- Cards -->
 
 
 @endsection
