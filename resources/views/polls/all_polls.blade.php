@@ -23,7 +23,7 @@
                     <div class="widget-header">
                         <div class="row">
                             <div class="col-xl-12 col-md-12 col-sm-12 col-12">
-                                <h4>All polls</h4>
+                                <h4>All polls (<b>TOTAL OF: {{$polls->count()}}</b>)</h4>
                             </div>
                         </div>
                     </div>
@@ -53,7 +53,7 @@
                                         <td class="">{{$poll->position}}</td>
                                         <td>
                                             @if ($poll->visibility == false)
-                                                <span style="color: greenyellow">Public</span>
+                                                <span style="color: black">Public</span>
                                             @else
                                                 <span style="color: green">Private</span>
                                             @endif

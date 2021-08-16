@@ -2,7 +2,7 @@ html {
     min-height: 100%
 }
 body {
-    color: #888da8;
+    color: palegoldenrod;
     height: 100%;
     font-size: 0.875rem;
     background: #e9ecef;
@@ -730,7 +730,7 @@ ul.inline-ordered-list li:before {
     border-top-left-radius: 6px;
 }
 .row [class*="col-"] .widget .widget-header h4 {
-    color: #3b3f5c;
+    color: palegoldenrod;
     font-size: 16px;
     font-weight: 600;
     margin: 0;
@@ -762,7 +762,7 @@ ul.inline-ordered-list li:before {
 .widget-content-area {
     padding: 20px;
     position: relative;
-    background-color: #009eda;
+    background-color: powderblue;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
     -webkit-box-shadow: 0px 2px 4px rgba(126,142,177,0.12);

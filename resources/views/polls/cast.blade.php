@@ -47,13 +47,17 @@
                                                     <div class="n-chk">
                                                         <label class="new-control new-checkbox checkbox-danger mb-0">
                                                             <input type="radio" name="candidate" value="{{$poll->candidate}}" class="new-control-input">
+                                                            <br>
                                                             <span class="new-control-indicator  mt-2"></span>
+                                                            <br>
                                                             <span class="d-flex justify-content-center ml-2">
                                                                 <span class="news-feeds-item ml-3">
                                                                     <span class="media d-sm-flex d-block">
                                                                         <span class="media-body">
-                                                                            <span class="news-feeds-text">{{$poll->candidate}}</span>
+                                                                            <span class="news-feeds-text">{{ucwords($poll->candidate)}}</span>
+                                                                            <br>
                                                                         </span>
+                                                                        <br>
                                                                     </span>
                                                                 </span>
                                                             </span>

@@ -7,7 +7,7 @@
 
 .navbar {
     padding: 0;
-    background: #FFFFFF;
+    background: palegoldenrod;
     border-bottom: 0.01rem solid #f4f4f4;
     -webkit-box-shadow: 0px 0px 15px 1px rgba(138, 132, 206, 0.03);
     -moz-box-shadow: 0px 0px 15px 1px rgba(138, 132, 206, 0.03);
@@ -524,7 +524,7 @@ header.navbar:not(.tabMobileView) .navbar-nav .nav-item form.form-inline:before 
     width: 255px;
 }
 .sidebar-theme {
-    background: #fff;
+    background: powderblue;
     border-right: 2px solid #e9ecef;
 }
 .sidebar-closed > .sidebar-wrapper {
@@ -535,7 +535,7 @@ header.navbar:not(.tabMobileView) .navbar-nav .nav-item form.form-inline:before 
     margin-left: 0px
 }
 #sidebar .theme-brand {
-    background-color: #fff;
+    background-color:palegoldenrod;
     padding: 0.9px;
     border-bottom: 2px solid #e9ecef;
 }
@@ -1636,7 +1636,7 @@ header.navbar:not(.tabMobileView) .navbar-nav .nav-item form.form-inline:before 
     }
 
     header.tabMobileView {
-        background-color: #fff;
+        background-color: palegoldenrod;
     }
 
     .navbar input.search-form-control {

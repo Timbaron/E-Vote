@@ -4,15 +4,14 @@
             <a href="javascript:void(0);" class="nav-link sidebarCollapse" data-placement="bottom">
                 <i class="flaticon-menu-line-2"></i>
             </a>
-        <a href="index-2.html" class=""> <img src="assets/img/logo-32.png" class="img-fluid" alt="logo"></a>
     </div>
-    <ul class="nav navbar-nav">
+    <!-- <ul class="nav navbar-nav">
         <li class="nav-item d-lg-none">
             <form class="form-inline justify-content-end" role="search">
                 <input type="text" class="form-control search-form-control mr-3">
             </form>
         </li>
-    </ul>
+    </ul> -->
 </header>
 <!-- Tab Mobile View Header -->
 
@@ -29,15 +28,15 @@
                 <span class="flaticon-user-12"></span>
             </a>
             <div class="dropdown-menu  position-absolute" aria-labelledby="userProfileDropdown">
-                <a class="dropdown-item" href="{{route('coming-soon')}}">
+                <!-- <a class="dropdown-item" href="{{route('coming-soon')}}">
                     <i class="mr-1 flaticon-user-6"></i> <span>My Profile</span>
-                </a>
+                </a> -->
                 <a class="dropdown-item" href="{{route('polls')}}">
                     <i class="flaticon-stack"></i> <span>My Polls</span>
                 </a>
-                <a class="dropdown-item" href="{{route('coming-soon')}}">
+                <!-- <a class="dropdown-item" href="{{route('coming-soon')}}">
                     <i class="mr-1 flaticon-email-fill-1"></i> <span>My Todos</span>
-                </a>
+                </a> -->
                 <div class="dropdown-divider"></div>
                 <!-- <span><a href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">></a></span> -->
                 <a class="dropdown-item" href="{{route('logout')}}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
