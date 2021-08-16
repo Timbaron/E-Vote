@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\PrivatePollCreatedEvent;
 use App\Http\Requests\PollRequest;
+use App\Mail\InviteMail;
 use App\Mail\PrivateMailInvite;
 use App\Models\Poll;
 use App\Models\Result;
@@ -67,10 +68,10 @@ class PollController extends Controller
         $poll = auth()->user()->polls()->create($request->all());
         if($request['visibility'] == '1')
         {
-
+            $poll_code = $poll_id;
             foreach($allowed_voters as $voter)
             {
-                Mail::to($voter)->queue(new PrivateMailInvite($poll_id));
+                Mail::to($voter)->queue(new InviteMail($poll_code));
             }
             // ddd($request['allowed_voters']);
         }
