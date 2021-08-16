@@ -11,15 +11,15 @@ class InviteMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $poll_code;
+    public $poll_id;
     /**
      * Create a new message instance.
      *
      * @return void
      */
-    public function __construct($poll_code)
+    public function __construct($poll_id)
     {
-        $this->poll_code = $poll_code;
+        $this->poll_id = $poll_id;
     }
 
     /**
@@ -31,6 +31,7 @@ class InviteMail extends Mailable
     {
         return $this->markdown('emails.invite')
         ->from('B-vote@support.com')
-        ->subject('You Recieved an Invite Mail');
+        ->subject('You Recieved an Invite Mail')
+        ->with('poll_id',$this->poll_id);
     }
 }

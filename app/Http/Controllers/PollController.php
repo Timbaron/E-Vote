@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Events\PrivatePollCreatedEvent;
 use App\Http\Requests\PollRequest;
+use App\Jobs\InviteMailJob;
 use App\Mail\InviteMail;
 use App\Mail\PrivateMailInvite;
 use App\Models\Poll;
@@ -46,7 +47,7 @@ class PollController extends Controller
      */
     public function store(PollRequest $request)
     {
-        $poll_id = 'BV'.rand(11,99) . rand(000,999);
+        $poll_id = 'BV'.rand(11,99) . rand(111,999);
         // Convert Candidates to array then to Json
         $candidates = strtolower($request['candidates']);
         $candidates = explode(',',$candidates);
@@ -68,16 +69,7 @@ class PollController extends Controller
         $poll = auth()->user()->polls()->create($request->all());
         if($request['visibility'] == '1')
         {
-            $poll_code = $poll_id;
-            foreach($allowed_voters as $voter)
-            {
-                Mail::to($voter)->queue(new InviteMail($poll_code));
-            }
-            // ddd($request['allowed_voters']);
-        }
-        if($request['send_invite'])
-        {
-            event(new PrivatePollCreatedEvent($poll));
+            dispatch(new InviteMailJob($poll_id,$allowed_voters));
         }
         notify()->success('Poll Created');
         return redirect('polls');
