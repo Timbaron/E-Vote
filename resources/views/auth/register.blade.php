@@ -97,8 +97,23 @@
                     <span style="color: red"><i><b>Email is already in use</b></i></span>
                 @enderror
             </div>
+            <label for="inputEmail" class="">First Name</label>
+            <input type="name" id="inputEmail" name="first_name" class="form-control mb-4" placeholder="First Name" required >
+            @error('first_name')
+                <span style="color: red"><i><b>{{$message}}</b></i></span>
+            @enderror <br>
+            <label for="inputEmail" class="">Last Name</label>
+            <input type="name" id="inputEmail" name="last_name" class="form-control mb-4" placeholder="Last Name" required >
+            @error('password')
+                <span style="color: red"><i><b>{{$message}}</b></i></span>
+            @enderror <br>
+            <label for="inputEmail" class="">User Name</label>
+            <input type="username" id="inputEmail" name="username" class="form-control mb-4" placeholder="User Name" required >
+            @error('password')
+                <span style="color: red"><i><b>Password do not match</b></i></span>
+            @enderror <br>
             <label for="inputEmail" class="">Email Address</label>
-            <input type="email" id="inputEmail" name="email" class="form-control mb-4" placeholder="Login" required >
+            <input type="email" id="inputEmail" name="email" class="form-control mb-4" placeholder="Email Address" required >
             @error('password')
                 <span style="color: red"><i><b>Password do not match</b></i></span>
             @enderror <br>

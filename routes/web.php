@@ -21,9 +21,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['auth','verified'])->group(function () {
-    Route::get('/dashboard', function(){
-        return view('dashboard');
-    });
+    Route::get('/dashboard', [HomeController::class, 'dashboard']);
     Route::get('polls',[PollController::class,'index'])->name('polls');
     Route::get('poll/create',[PollController::class,'create'])->name('poll.create');
     Route::post('poll/store',[PollController::class, 'store'])->name('poll.store');
