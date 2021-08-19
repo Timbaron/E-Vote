@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\Request;
 use Laravel\Socialite\Facades\Socialite;
 
 class LoginController extends Controller
@@ -72,5 +73,32 @@ class LoginController extends Controller
             auth()->login($newUser);
         }
         return redirect()->to('/');
+    
     }
+    // Login methods
+    public function login()
+    {
+        return view('auth.login');
+    }
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('/');
+    }
+    // Login post methods
+    public function postLogin(Request $request)
+    {
+        $this->validate($request, [
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+        $credentials = $request->only('email', 'password');
+        $user = auth()->attempt($credentials);
+        if($user){
+            return redirect()->intended('/');
+        } else {
+            return redirect()->back()->withInput()->withErrors(['email' => 'Invalid email or password']);
+        }
+    }
+
 }

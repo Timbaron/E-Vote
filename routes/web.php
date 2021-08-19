@@ -2,10 +2,8 @@
 
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\MailController;
 use App\Http\Controllers\PollController;
 use App\Http\Controllers\VoteController;
-use Illuminate\Auth\Events\Login;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -40,7 +38,13 @@ Route::middleware(['auth','verified'])->group(function () {
 Route::get('coming-soon',[HomeController::class,'coming_soon'])->name('coming-soon');
 Route::get('login/redirect', [LoginController::class, 'redirectToProvider']);
 Route::get('login/callback', [LoginController::class, 'handleProviderCallback']);
-Auth::routes(['verify'=> true]);
+// login route to postlogin method in login controller
+Route::get('login', [LoginController::class, 'Login']);
+// Post request for postlogin method in login controller
+Route::post('login', [LoginController::class, 'postLogin'])->name('login');
+
+// Disable login route form Auth::routes();
+Auth::routes(['verify'=> true,'login'=> false]);
 // Auth::routes(['verify' => true]);
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

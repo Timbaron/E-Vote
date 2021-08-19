@@ -183,10 +183,5 @@ class PollController extends Controller
             return redirect()->back();
         }
     }
-    public function temp()
-    {
-        $role = Role::create(['name' => 'user']);
-        $role = Role::create(['name' => 'admin']);
-
-    }
+    
 }
