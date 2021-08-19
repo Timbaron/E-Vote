@@ -12,7 +12,7 @@
                 <div class="crumbs">
                     <ul id="breadcrumbs" class="breadcrumb">
                         <li><a href="/"><i class="flaticon-home-fill"></i></a></li>
-                        <li class="active"><a href="#">👊</a> </li>
+                        <li class="active"><a href="#">Dear {{auth()->user()->username}}👊</a> </li>
                     </ul>
                 </div>
             </div>
