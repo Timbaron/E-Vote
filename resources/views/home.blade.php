@@ -62,7 +62,11 @@
                     <div class="site-header-inner  mt-lg-0 mt-5">
                         <h2 class="">B-VOTE</h2>
                         <p>Faster and easier way to create and cast your votes online.</p>
-                        <button class="btn btn-primary mt-5" type="submit">Learn More</button>
+                        @auth
+                        <a href="/dashboard" class="btn btn-primary mt-5">Dashboard</a>
+                        @else
+                        <a href="/login" class="btn btn-primary mt-5">Create a new account</a>
+                        @endauth
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-12 col-sm-12 col-12 order-lg-2 order-1 text-center">
