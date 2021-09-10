@@ -56,8 +56,7 @@ class PollController extends Controller
 
         $request['poll_id'] = $poll_id;
         if($request['visibility'] == '0' && !empty($request['allowed_voters'])){
-            $request['allowed_voters'] = '';
-            $request['send_invite'] = null;
+            $request['allowed_voters'] = null;
         }
         // Convert Emails to array then to Json
         if(!empty($request['allowed_voters'])){
@@ -120,9 +119,10 @@ class PollController extends Controller
         if($poll->allowed_voters)
         {
             $poll->allowed_voters = json_decode($poll->allowed_voters);
+            // dd($poll->allowed_voters);
             foreach($poll->allowed_voters as $poll->allowed_voter)
             {
-                $all_voters .= $poll->allowed_voter;
+                $all_voters .= $poll->allowed_voter . ',';
             }
         }
         return view('polls.edit_polls',compact('poll','all_candidates','all_voters'));

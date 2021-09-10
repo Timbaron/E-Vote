@@ -100,32 +100,20 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div class="row">
-                                                <div class="col-lg-12 col-md-6 col-sm-6 col-12 layout-spacing">
-                                                    <div class="statbox widget box box-shadow">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-lg-12 col-md-6 col-sm-6 col-12 layout-spacing">
+                                            <div class="statbox widget box box-shadow">
 
-                                                        <div class="widget-content widget-content-area">
-                                                            <div class="input-group mb-4">
-                                                                <textarea name="allowed_voters" id="" cols="90" rows="5" placeholder="E.g abc@def.com , xyz@kpk.com">{{$all_voters}}</textarea>
-                                                                <div class="input-group-append">
-                                                                    <div class="input-group-text">
-                                                                        <label class="switch s-secondary mt-2">
-                                                                            <input type="checkbox" name="send_invite"
-                                                                                @if ($poll->send_invite)
-                                                                                    checked
-                                                                                @endif
-                                                                            value="1">
-                                                                            <span class="slider"></span><br>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
+                                                <div class="widget-content widget-content-area">
+                                                    <div class="input-group mb-4">
+                                                        <textarea name="allowed_voters" id="" cols="90" rows="5" placeholder="E.g abc@def.com , xyz@kpk.com">{{$all_voters}}</textarea>
                                                     </div>
                                                 </div>
-
                                             </div>
                                         </div>
+
                                     </div>
                                 </div>
                                 <div class="row">
